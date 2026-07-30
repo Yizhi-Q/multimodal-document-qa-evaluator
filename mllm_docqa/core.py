@@ -7,6 +7,7 @@ import json
 import mimetypes
 import os
 import re
+import time
 from pathlib import Path
 from typing import Any
 
@@ -50,6 +51,11 @@ def parse_model_output(raw_text: str, expected_fields: list[str] | None = None) 
         raise OutputParseError("The response did not contain a valid JSON object.")
 
     fields = parsed.get("fields") if isinstance(parsed.get("fields"), dict) else {}
+    # Some vision-language models follow the requested field schema directly
+    # and return the extracted fields at the top level. Accept that useful
+    # output instead of incorrectly scoring every requested field as missing.
+    if not fields and expected_fields:
+        fields = {name: parsed.get(name) for name in expected_fields}
     if expected_fields:
         fields = {name: fields.get(name) for name in expected_fields}
     try:
@@ -72,12 +78,18 @@ def image_data_url(image_path: str | Path) -> str:
     return f"data:{mime};base64,{base64.b64encode(path.read_bytes()).decode('ascii')}"
 
 
-class DocumentAnalyzer:
+def _build_prompt(question: str, field_schema: dict[str, Any]) -> str:
+    schema_text = json.dumps(field_schema, ensure_ascii=False, indent=2)
+    return (
+        f"Requested field schema:\n{schema_text}\n\n"
+        f"Question: {question}\nKeep field names exactly as provided."
+    )
+
+
+class _OpenAIAnalyzer:
     def __init__(self):
-        from dotenv import load_dotenv
         from openai import OpenAI
 
-        load_dotenv()
         api_key = os.getenv("MLLM_API_KEY", "").strip()
         if not api_key or api_key == "replace_me":
             raise RuntimeError("MLLM_API_KEY is missing. Copy .env.example to .env and add your key.")
@@ -91,12 +103,9 @@ class DocumentAnalyzer:
         )
 
     def analyze(self, image_path: str | Path, question: str, field_schema: dict[str, Any]):
-        schema_text = json.dumps(field_schema, ensure_ascii=False, indent=2)
-        prompt = (
-            f"Requested field schema:\n{schema_text}\n\n"
-            f"Question: {question}\nKeep field names exactly as provided."
-        )
+        prompt = _build_prompt(question, field_schema)
         url = image_data_url(image_path)
+        started = time.perf_counter()
         if self.api_mode == "responses":
             response = self.client.responses.create(
                 model=self.model,
@@ -120,5 +129,113 @@ class DocumentAnalyzer:
             )
             raw = response.choices[0].message.content or ""
         result = parse_model_output(raw, list(field_schema))
-        result["metadata"] = {"model": self.model, "api_mode": self.api_mode}
+        result["metadata"] = {
+            "backend": "openai",
+            "model": self.model,
+            "api_mode": self.api_mode,
+            "latency_seconds": round(time.perf_counter() - started, 3),
+        }
         return result
+
+
+class _TransformersAnalyzer:
+    """Local Qwen2.5-VL inference backend for an NVIDIA GPU."""
+
+    def __init__(self):
+        import torch
+        from transformers import AutoProcessor, BitsAndBytesConfig, Qwen2_5_VLForConditionalGeneration
+
+        if not torch.cuda.is_available():
+            raise RuntimeError("The transformers backend requires a CUDA-capable GPU.")
+
+        self.torch = torch
+        self.model_name = os.getenv("MLLM_LOCAL_MODEL", "Qwen/Qwen2.5-VL-3B-Instruct")
+        load_in_4bit = os.getenv("MLLM_LOAD_IN_4BIT", "true").strip().lower() in {
+            "1", "true", "yes", "on",
+        }
+        model_kwargs: dict[str, Any] = {"torch_dtype": "auto", "device_map": "auto"}
+        if load_in_4bit:
+            model_kwargs["quantization_config"] = BitsAndBytesConfig(
+                load_in_4bit=True,
+                bnb_4bit_quant_type="nf4",
+                bnb_4bit_compute_dtype=torch.float16,
+                bnb_4bit_use_double_quant=True,
+            )
+        self.model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
+            self.model_name,
+            **model_kwargs,
+        )
+        self.processor = AutoProcessor.from_pretrained(self.model_name)
+        self.load_in_4bit = load_in_4bit
+
+    def analyze(self, image_path: str | Path, question: str, field_schema: dict[str, Any]):
+        from qwen_vl_utils import process_vision_info
+
+        prompt = _build_prompt(question, field_schema)
+        messages = [
+            {"role": "system", "content": [{"type": "text", "text": SYSTEM_PROMPT}]},
+            {"role": "user", "content": [
+                {"type": "image", "image": Path(image_path).resolve().as_uri()},
+                {"type": "text", "text": prompt},
+            ]},
+        ]
+        chat_text = self.processor.apply_chat_template(
+            messages, tokenize=False, add_generation_prompt=True
+        )
+        image_inputs, video_inputs = process_vision_info(messages)
+        inputs = self.processor(
+            text=[chat_text],
+            images=image_inputs,
+            videos=video_inputs,
+            padding=True,
+            return_tensors="pt",
+        ).to(self.model.device)
+
+        self.torch.cuda.reset_peak_memory_stats()
+        started = time.perf_counter()
+        with self.torch.inference_mode():
+            generated_ids = self.model.generate(
+                **inputs,
+                max_new_tokens=int(os.getenv("MLLM_MAX_NEW_TOKENS", "512")),
+                do_sample=False,
+            )
+        latency = time.perf_counter() - started
+        generated_ids = [
+            output_ids[len(input_ids):]
+            for input_ids, output_ids in zip(inputs.input_ids, generated_ids)
+        ]
+        raw = self.processor.batch_decode(
+            generated_ids,
+            skip_special_tokens=True,
+            clean_up_tokenization_spaces=False,
+        )[0]
+        result = parse_model_output(raw, list(field_schema))
+        result["metadata"] = {
+            "backend": "transformers",
+            "model": self.model_name,
+            "load_in_4bit": self.load_in_4bit,
+            "latency_seconds": round(latency, 3),
+            "peak_gpu_memory_gib": round(
+                self.torch.cuda.max_memory_allocated() / (1024 ** 3), 3
+            ),
+        }
+        return result
+
+
+class DocumentAnalyzer:
+    """Select an API-hosted or local transformers inference backend."""
+
+    def __init__(self):
+        from dotenv import load_dotenv
+
+        load_dotenv()
+        backend = os.getenv("MLLM_BACKEND", "openai").strip().lower()
+        if backend == "openai":
+            self._backend = _OpenAIAnalyzer()
+        elif backend == "transformers":
+            self._backend = _TransformersAnalyzer()
+        else:
+            raise RuntimeError("MLLM_BACKEND must be 'openai' or 'transformers'.")
+
+    def analyze(self, image_path: str | Path, question: str, field_schema: dict[str, Any]):
+        return self._backend.analyze(image_path, question, field_schema)

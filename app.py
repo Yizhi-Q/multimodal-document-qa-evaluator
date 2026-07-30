@@ -2,6 +2,7 @@
 
 import json
 import traceback
+from functools import lru_cache
 
 import gradio as gr
 
@@ -17,12 +18,18 @@ DEFAULT_SCHEMA = {
 }
 
 
+@lru_cache(maxsize=1)
+def get_analyzer():
+    """Load a local model once and reuse it across Gradio requests."""
+    return DocumentAnalyzer()
+
+
 def analyse(image_path, question, schema_text):
     if not image_path:
         return "Upload a document image first.", None
     try:
         schema = json.loads(schema_text)
-        result = DocumentAnalyzer().analyze(image_path, question, schema)
+        result = get_analyzer().analyze(image_path, question, schema)
         return "Analysis complete.", result
     except Exception as exc:
         traceback.print_exc()
@@ -44,4 +51,3 @@ with gr.Blocks(title="Multimodal Document QA Evaluator") as demo:
 
 if __name__ == "__main__":
     demo.launch()
-

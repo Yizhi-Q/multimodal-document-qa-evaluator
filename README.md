@@ -77,6 +77,36 @@ python evaluate.py
 
 Set `MLLM_API_MODE=chat` when using a compatible provider that implements Chat Completions rather than the Responses API.
 
+## Run locally with Qwen2.5-VL
+
+The local backend is intended for an NVIDIA GPU and has been sized for the
+3B model in 4-bit mode. Install the optional dependencies in the same virtual
+environment:
+
+```bash
+pip install -r requirements-local.txt
+```
+
+Set the backend in `.env`:
+
+```dotenv
+MLLM_BACKEND=transformers
+MLLM_LOCAL_MODEL=Qwen/Qwen2.5-VL-3B-Instruct
+MLLM_LOAD_IN_4BIT=true
+MLLM_MAX_NEW_TOKENS=512
+```
+
+Run the labelled three-document benchmark:
+
+```bash
+python evaluate.py
+```
+
+The generated `artifacts/evaluation_results.json` includes field accuracy,
+per-example predictions, average inference latency, and peak allocated GPU
+memory. Start `python app.py` to use the same local model through the browser
+demo; the model is cached after its first load.
+
 ## Evaluation format
 
 Each line in `data/annotations.jsonl` contains an image path, a question, the requested field schema, and expected fields. `evaluate.py` writes a detailed report to `artifacts/evaluation_results.json`.
