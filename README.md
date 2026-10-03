@@ -19,6 +19,9 @@ NF4 used 65.9% less recorded allocated memory and took longer per receipt on thi
 
 [Full benchmark and raw records](docs/BENCHMARK.md) · [Five validation examples reviewed](docs/VALIDATION_REVIEW.md)
 
+[Receipt error improvement experiment](docs/ERROR_IMPROVEMENT.md): switchable label-aware instructions, prediction review flags and a separate validation holdout. The published test figures above describe the original baseline.
+The optional recheck improved one development field but left holdout accuracy unchanged (227/281, 80.78%). Extra rechecks remain disabled by default.
+
 ## Start here
 
 - [Cloud GPU run guide in Chinese](docs/CLOUD_RUN.md): RunPod, AutoDL, or another Linux NVIDIA machine.

@@ -17,13 +17,20 @@ def main(argv=None):
     modes.add_argument("--dry-run", action="store_true", help="Mock pipeline check, never model performance")
     modes.add_argument("--predictions", type=Path, help="Re-score a previous run's predictions.jsonl")
     parser.add_argument("--limit", type=int, help="Use the first N rows; selection is recorded in the report")
+    parser.add_argument("--offset", type=int, default=0, help="Skip N eligible rows before applying --limit")
     args = parser.parse_args(argv)
     try:
         rows, info = load_dataset(args.dataset)
+        if args.offset < 0:
+            raise ValueError("--offset must be nonnegative")
+        rows = rows[args.offset:]
         if args.limit is not None:
             if args.limit < 1:
                 raise ValueError("--limit must be positive")
             rows = rows[:args.limit]
+        if not rows:
+            raise ValueError("Document selection is empty")
+        info["selection"] = {"offset": args.offset, "limit": args.limit, "order": "annotation file order"}
         info["selected_ids"] = [row["id"] for row in rows]
         info["selected_examples"] = len(rows)
         mode = "dry-run" if args.dry_run else "replay" if args.predictions else "live"
