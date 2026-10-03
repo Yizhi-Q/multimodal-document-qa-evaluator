@@ -55,7 +55,7 @@ python evaluate.py --dataset data/cord/validation/annotations.jsonl --limit 20 \
 
 数据已在 HF 缓存时，可添加 `--offline`，避免再次联网查询；必须明确提供 40 位的 revision。模型缓存就绪后可以设置 `HF_HUB_OFFLINE=1` 与 `TRANSFORMERS_OFFLINE=1`。
 
-本轮在验证集上排查了 FP16 的无效输出，改为 BF16 计算，并修正货币前缀与税额的提取要求。BF16 需要 GPU 支持，程序会检查。Qwen 模型卡使用 `torch_dtype="auto"` 或 BF16 的示例；不要把所有 16 位格式视为相同的数值设置。
+本轮在验证集上排查了 FP16 的无效输出，改为 BF16 计算，并修正货币前缀与税额的提取要求。BF16 需要 GPU 支持，程序会检查。Qwen 模型卡使用 `torch_dtype="auto"` 或 BF16 的示例；不要把所有 16-bit 格式视为相同的数值设置。
 
 来源：[Qwen 官方模型卡](https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct)。
 

@@ -1,9 +1,9 @@
 # 2026-10-03 实验存档
 
 - `cord-test-nf4`、`cord-test-bf16`：固定配置后的两次完整真实测试，同一批 95 张票据、319 个标注金额字段。
-- `cord-validation-nf4`：最终提示词与 BF16 计算的 20 张验证实验。
+- `cord-validation-nf4`：最终 prompt 与 BF16 计算的 20 张验证实验。
 - 名称含 `initial` 或 `diagnostic` 的目录：验证阶段的旧配置与排错尝试，保留失败记录。
-- `comparison.json`：从原始测试记录计算的准确率、耗时与已分配显存摘要。
+- `comparison.json`：从原始测试记录计算的准确率、耗时与 allocated memory 摘要。
 - `*-manifest.json`：数据版本、源文件哈希、纳入与排除清单。
 - `*-annotations.jsonl`：记录各阶段的提取问题、字段 Schema 与标准答案；仅这几个文件不能直接重新评测，因为完整图片不在存档中。
 - `model-integrity.json`、`canonical-metadata.json`：下载文件与官方固定版本的对应关系。
