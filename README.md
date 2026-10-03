@@ -1,5 +1,7 @@
 # Multimodal Document QA Evaluator
 
+English | [简体中文](README.zh-CN.md)
+
 A personal project for extracting structured fields from document images and evaluating the results. It supports an OpenAI-compatible API and local or cloud NVIDIA inference with Qwen2.5-VL.
 
 The current version includes official CORD receipt import, schema-aware scoring, per-document predictions, error review, and comparable run reports. A real GPU evaluation was completed on 2026-10-03 using Qwen2.5-VL-3B-Instruct and an RTX 5090. The three bundled synthetic documents remain pipeline fixtures.
