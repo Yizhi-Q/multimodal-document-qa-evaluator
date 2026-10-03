@@ -1,0 +1,28 @@
+{
+  "NF4": {
+    "examples": 95,
+    "correct_fields": 268,
+    "total_fields": 319,
+    "field_accuracy": 0.8401253918495298,
+    "document_accuracy": 0.7263157894736842,
+    "failed_examples": 0,
+    "mean_wall": 2.283513147368421,
+    "median_wall": 2.143121,
+    "p95_wall": 2.5932684,
+    "mean_generation": 2.1895684210526314,
+    "peak_allocated_gib": 2.458
+  },
+  "BF16": {
+    "examples": 95,
+    "correct_fields": 272,
+    "total_fields": 319,
+    "field_accuracy": 0.8526645768025078,
+    "document_accuracy": 0.7263157894736842,
+    "failed_examples": 0,
+    "mean_wall": 1.5946376631578947,
+    "median_wall": 1.594322,
+    "p95_wall": 1.8694129999999995,
+    "mean_generation": 1.5020736842105262,
+    "peak_allocated_gib": 7.204
+  }
+}

@@ -1,0 +1,156 @@
+[
+  {
+    "repository": "Qwen/Qwen2.5-VL-3B-Instruct",
+    "type": "model",
+    "revision": "66285546d2b821cf421d4f5eb2576359d3770cd3",
+    "endpoint": "https://huggingface.co",
+    "files": [
+      {
+        "file": ".gitattributes",
+        "size": 1519,
+        "blob_id": "a6344aac8c09253b3b630fb776ae94478aa0275b",
+        "sha256": null
+      },
+      {
+        "file": "LICENSE",
+        "size": 7387,
+        "blob_id": "87f48cf86671d627b4dd4b8e5189b8e32ae11dd8",
+        "sha256": null
+      },
+      {
+        "file": "README.md",
+        "size": 18276,
+        "blob_id": "d09bc2825f7d1dc394ee6766e2e95bcc59f47196",
+        "sha256": null
+      },
+      {
+        "file": "chat_template.json",
+        "size": 1050,
+        "blob_id": "732bd68bc5427d1fb6c06a59b3bf2456b2155d24",
+        "sha256": null
+      },
+      {
+        "file": "config.json",
+        "size": 1373,
+        "blob_id": "0ae1866f05ab0153ad293bdc92bb1b842c4d95b1",
+        "sha256": null
+      },
+      {
+        "file": "generation_config.json",
+        "size": 216,
+        "blob_id": "1dfafa23e24b68b694722c6211e7da36730e9917",
+        "sha256": null
+      },
+      {
+        "file": "merges.txt",
+        "size": 1671839,
+        "blob_id": "20024bfe7c83998e9aeaf98a0cd6a2ce6306c2f0",
+        "sha256": null
+      },
+      {
+        "file": "model-00001-of-00002.safetensors",
+        "size": 3982649232,
+        "blob_id": "dd4783960cb71fbd0619490ca3a79c0206fd0d0f",
+        "sha256": "41a8895c164b4d32bae6b302f4603fcbc1797f32dafa45c7e9bcda23c6755df8"
+      },
+      {
+        "file": "model-00002-of-00002.safetensors",
+        "size": 3526688744,
+        "blob_id": "44271c4ddd0b2097992bf4be145d368042329861",
+        "sha256": "365531ff8752420e89dee707b79d021fb2d6e25abafe486f080555a4fe6972e4"
+      },
+      {
+        "file": "model.safetensors.index.json",
+        "size": 65448,
+        "blob_id": "7a3ec4f48662e38593f8cab48fe12a4f28003aba",
+        "sha256": null
+      },
+      {
+        "file": "preprocessor_config.json",
+        "size": 350,
+        "blob_id": "7f3b746825e5eef53ed8ed57a91df9e86ee62c0a",
+        "sha256": null
+      },
+      {
+        "file": "tokenizer.json",
+        "size": 7031645,
+        "blob_id": "443909a61d429dff23010e5bddd28ff530edda00",
+        "sha256": null
+      },
+      {
+        "file": "tokenizer_config.json",
+        "size": 5702,
+        "blob_id": "91684ea3dc135a7d815e2c932054ce88c1aab41f",
+        "sha256": null
+      },
+      {
+        "file": "vocab.json",
+        "size": 2776833,
+        "blob_id": "4783fe10ac3adce15ac8f358ef5462739852c569",
+        "sha256": null
+      }
+    ]
+  },
+  {
+    "repository": "naver-clova-ix/cord-v2",
+    "type": "dataset",
+    "revision": "7f0115a4b758a71d6473b8d085751692da2fef98",
+    "endpoint": "https://huggingface.co",
+    "files": [
+      {
+        "file": ".gitattributes",
+        "size": 1737,
+        "blob_id": "89fd3aa9612fb83a45aee3264b204d41230a6397",
+        "sha256": null
+      },
+      {
+        "file": "README.md",
+        "size": 27,
+        "blob_id": "b187bb7e7d837a367ccd0862441947ad412c77f7",
+        "sha256": null
+      },
+      {
+        "file": "data/test-00000-of-00001-9c204eb3f4e11791.parquet",
+        "size": 234202795,
+        "blob_id": "a674a6aef479b0c87cbfe428baa603cfc2901391",
+        "sha256": "51c65f1788faff392abe2a0b55b023eb23e9be551c509138eaa3a832514224e7"
+      },
+      {
+        "file": "data/train-00000-of-00004-b4aaeceff1d90ecb.parquet",
+        "size": 490224630,
+        "blob_id": "6388701a7274587219ca7ff2dd313eb1257fd1c3",
+        "sha256": "da3994eee1bf9bd3c57f0d53a72c3a6812c8696c5ba26245987949ddf73483cc"
+      },
+      {
+        "file": "data/train-00001-of-00004-7dbbe248962764c5.parquet",
+        "size": 441418432,
+        "blob_id": "78bd10454ee33f3640b1c61717de75051c1cc359",
+        "sha256": "cce4def16a0d6a6c75f80be712f7494c56c318a8829b712f5c62650155c9e58e"
+      },
+      {
+        "file": "data/train-00002-of-00004-688fe1305a55e5cc.parquet",
+        "size": 443802181,
+        "blob_id": "b42763d31932309c8811db8b2f3935f452a3beed",
+        "sha256": "591e2db8fe8b1d364b054f46e8c375b7f00e72578914ba46a573b6858162cab2"
+      },
+      {
+        "file": "data/train-00003-of-00004-2d0cd200555ed7fd.parquet",
+        "size": 455555434,
+        "blob_id": "469363bd9de1310012e20b74ebadaeed2602b3bd",
+        "sha256": "1ffd9de8d6fbcee7630fd4cdfedff05b9b7fabc0fae4fc17557c5fe7cf178748"
+      },
+      {
+        "file": "data/validation-00000-of-00001-cc3c5779fe22e8ca.parquet",
+        "size": 242080800,
+        "blob_id": "dcc838661ffafc4c647b8c7c751f934f971a4944",
+        "sha256": "0d0f6dac11fdcc549de2746aa9f53136a3bc22a2a1aff2b0b847f7622ad60c15"
+      },
+      {
+        "file": "dataset_infos.json",
+        "size": 1048,
+        "blob_id": "b7d7e2e9aca5de87b301342d2708bf55f40eebb1",
+        "sha256": null
+      }
+    ]
+  }
+]

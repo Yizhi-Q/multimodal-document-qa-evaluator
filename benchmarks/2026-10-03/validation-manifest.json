@@ -1,0 +1,16 @@
+{
+  "dataset": "naver-clova-ix/cord-v2",
+  "revision": "7f0115a4b758a71d6473b8d085751692da2fef98",
+  "split": "validation",
+  "license": "CC-BY-4.0",
+  "url": "https://huggingface.co/datasets/naver-clova-ix/cord-v2",
+  "prepared_at_utc": "2026-10-03T05:40:06.495313+00:00",
+  "source_rows_examined": 100,
+  "included_examples": 100,
+  "excluded": [],
+  "source_files_sha256": {
+    "data/validation-00000-of-00001-cc3c5779fe22e8ca.parquet": "0d0f6dac11fdcc549de2746aa9f53136a3bc22a2a1aff2b0b847f7622ad60c15"
+  },
+  "task": "Six receipt amount fields, scored only where a label exists",
+  "selection": "First N rows in the original official split order"
+}

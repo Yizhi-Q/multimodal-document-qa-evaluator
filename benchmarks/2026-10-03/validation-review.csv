@@ -1,0 +1,22 @@
+﻿id,field,expected,initial_prediction,final_prediction,final_correct,review_category,review_notes
+cord-validation-0001,total_amount,"""23.000""",null,"""50.000""",False,wrong_field,Total 23.000; Tunai 50.000; final total copied cash. Initial output was not JSON.
+cord-validation-0001,cash_amount,"""50.000""",null,"""50.000""",True,wrong_field,Total 23.000; Tunai 50.000; final total copied cash. Initial output was not JSON.
+cord-validation-0001,change_amount,"""27.000""",null,"""27.000""",True,wrong_field,Total 23.000; Tunai 50.000; final total copied cash. Initial output was not JSON.
+cord-validation-0002,subtotal_amount,"""18,181""","""18,181""","""18,181""",True,wrong_field,"PB1 monetary amount 1,818; footer 10% is a rate; Cash 100,000."
+cord-validation-0002,tax_amount,"""1,818""","""null""","""10%""",False,wrong_field,"PB1 monetary amount 1,818; footer 10% is a rate; Cash 100,000."
+cord-validation-0002,total_amount,"""20,000""","""20,000""","""20,000""",True,wrong_field,"PB1 monetary amount 1,818; footer 10% is a rate; Cash 100,000."
+cord-validation-0002,cash_amount,"""100,000""","""100,000""","""20,000""",False,wrong_field,"PB1 monetary amount 1,818; footer 10% is a rate; Cash 100,000."
+cord-validation-0002,change_amount,"""80,000""","""80,000""","""80,000""",True,wrong_field,"PB1 monetary amount 1,818; footer 10% is a rate; Cash 100,000."
+cord-validation-0004,subtotal_amount,"""41,000""","""41,000""","""41,000""",True,label_boundary,"GT includes colon in :9,000; prediction omits it. Original scoring retained."
+cord-validation-0004,total_amount,"""41,000""","""41,000""","""41,000""",True,label_boundary,"GT includes colon in :9,000; prediction omits it. Original scoring retained."
+cord-validation-0004,cash_amount,"""50.000""","""50.000""","""50.000""",True,label_boundary,"GT includes colon in :9,000; prediction omits it. Original scoring retained."
+cord-validation-0004,change_amount,""":9,000""","""9,000""","""9,000""",False,label_boundary,"GT includes colon in :9,000; prediction omits it. Original scoring retained."
+cord-validation-0015,subtotal_amount,"""Rp 54.000""","""54.000""","""Rp 54.000""",True,protocol_mismatch_fixed,Currency Rp is printed with each amount. Old instruction excluded currency; corrected extraction request preserves it.
+cord-validation-0015,tax_amount,"""Rp 5.400""","""5.400""","""Rp 5.400""",True,protocol_mismatch_fixed,Currency Rp is printed with each amount. Old instruction excluded currency; corrected extraction request preserves it.
+cord-validation-0015,total_amount,"""Rp 59.400""","""59.400""","""Rp 59.400""",True,protocol_mismatch_fixed,Currency Rp is printed with each amount. Old instruction excluded currency; corrected extraction request preserves it.
+cord-validation-0015,cash_amount,"""Rp 100.000""","""100.000""","""Rp 100.000""",True,protocol_mismatch_fixed,Currency Rp is printed with each amount. Old instruction excluded currency; corrected extraction request preserves it.
+cord-validation-0015,change_amount,"""Rp 40.600""","""40.600""","""Rp 40.600""",True,protocol_mismatch_fixed,Currency Rp is printed with each amount. Old instruction excluded currency; corrected extraction request preserves it.
+cord-validation-0017,subtotal_amount,"""20,000""","""20.0000""","""20.0000""",False,formatting_and_label_issue,"Printed comma separators; predictions use dots and extra zeros. GT change 80.000 conflicts with image 80,000; GT unchanged."
+cord-validation-0017,total_amount,"""20,000""","""20.0000""","""20.0000""",False,formatting_and_label_issue,"Printed comma separators; predictions use dots and extra zeros. GT change 80.000 conflicts with image 80,000; GT unchanged."
+cord-validation-0017,cash_amount,"""100,000""","""100.0000""","""100.0000""",False,formatting_and_label_issue,"Printed comma separators; predictions use dots and extra zeros. GT change 80.000 conflicts with image 80,000; GT unchanged."
+cord-validation-0017,change_amount,"""80.000""","""80.0000""","""80.0000""",False,formatting_and_label_issue,"Printed comma separators; predictions use dots and extra zeros. GT change 80.000 conflicts with image 80,000; GT unchanged."
