@@ -1,65 +1,69 @@
-"""Batch evaluation CLI with an API-free dry-run."""
-
+"""Run a real model, a labelled fixture check, or re-score saved predictions."""
+from __future__ import annotations
 import argparse
+import hashlib
 import json
+from datetime import datetime, timezone
 from pathlib import Path
-
-from mllm_docqa.scoring import score_fields
-
-
-def load_rows(path):
-    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+from mllm_docqa.dataset import load_dataset
+from mllm_docqa.evaluation import evaluate_rows
 
 
-def main():
-    parser = argparse.ArgumentParser()
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dataset", type=Path, default=Path("data/annotations.jsonl"))
-    parser.add_argument("--output", type=Path, default=Path("artifacts/evaluation_results.json"))
-    parser.add_argument("--dry-run", action="store_true")
-    args = parser.parse_args()
-
-    analyzer = None
-    if not args.dry_run:
-        from mllm_docqa.core import DocumentAnalyzer
-        analyzer = DocumentAnalyzer()
-    results = []
-    for row in load_rows(args.dataset):
-        prediction = row["mock_response"] if args.dry_run else analyzer.analyze(
-            args.dataset.parent / row["image"], row["question"], row["field_schema"]
-        )
-        score = score_fields(prediction["fields"], row["expected_fields"])
-        results.append({"id": row["id"], "score": score, "prediction": prediction})
-    correct = sum(item["score"]["correct"] for item in results)
-    total = sum(item["score"]["total"] for item in results)
-    latencies = [
-        item["prediction"].get("metadata", {}).get("latency_seconds")
-        for item in results
-    ]
-    latencies = [value for value in latencies if isinstance(value, (int, float))]
-    memory_peaks = [
-        item["prediction"].get("metadata", {}).get("peak_gpu_memory_gib")
-        for item in results
-    ]
-    memory_peaks = [value for value in memory_peaks if isinstance(value, (int, float))]
-    report = {
-        "mode": "dry-run" if args.dry_run else "live",
-        "examples": len(results),
-        "field_accuracy": correct / total if total else 0.0,
-        "performance": {
-            "average_latency_seconds": round(sum(latencies) / len(latencies), 3) if latencies else None,
-            "peak_gpu_memory_gib": max(memory_peaks) if memory_peaks else None,
-        },
-        "results": results,
-    }
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(report, indent=2), encoding="utf-8")
-    summary = f"Evaluated {len(results)} examples | field accuracy: {report['field_accuracy']:.1%}"
-    if latencies:
-        summary += f" | average latency: {report['performance']['average_latency_seconds']:.2f}s"
-    if memory_peaks:
-        summary += f" | peak GPU memory: {report['performance']['peak_gpu_memory_gib']:.2f} GiB"
-    print(summary)
+    parser.add_argument("--output", type=Path, help="New run directory; existing directories are never overwritten")
+    modes = parser.add_mutually_exclusive_group()
+    modes.add_argument("--dry-run", action="store_true", help="Mock pipeline check, never model performance")
+    modes.add_argument("--predictions", type=Path, help="Re-score a previous run's predictions.jsonl")
+    parser.add_argument("--limit", type=int, help="Use the first N rows; selection is recorded in the report")
+    args = parser.parse_args(argv)
+    try:
+        rows, info = load_dataset(args.dataset)
+        if args.limit is not None:
+            if args.limit < 1:
+                raise ValueError("--limit must be positive")
+            rows = rows[:args.limit]
+        info["selected_ids"] = [row["id"] for row in rows]
+        info["selected_examples"] = len(rows)
+        mode = "dry-run" if args.dry_run else "replay" if args.predictions else "live"
+        config, analyzer, predictions = {}, None, None
+        if mode == "dry-run":
+            if not all(isinstance(row.get("mock_response"), dict) for row in rows):
+                raise ValueError("--dry-run requires fixtures; it cannot evaluate real CORD data")
+        elif mode == "replay":
+            records = [json.loads(line) for line in args.predictions.read_text(encoding="utf-8").splitlines() if line.strip()]
+            predictions = {}
+            for record in records:
+                if record["id"] in predictions:
+                    raise ValueError("Duplicate prediction IDs")
+                predictions[record["id"]] = record
+            if not set(info["selected_ids"]) <= set(predictions):
+                raise ValueError("Saved predictions are missing selected dataset IDs")
+            manifest = args.predictions.parent / "run.json"
+            if not manifest.exists():
+                raise ValueError("Replay requires the source run.json beside predictions.jsonl")
+            source = json.loads(manifest.read_text(encoding="utf-8"))
+            if source["dataset"]["fingerprint"] != info["fingerprint"]:
+                raise ValueError("Saved predictions use a different dataset fingerprint")
+            config = {"source_mode": source["mode"], "source_configuration": source["configuration"],
+                      "predictions_sha256": hashlib.sha256(args.predictions.read_bytes()).hexdigest()}
+        if args.output is not None and args.output.exists():
+            raise ValueError("Output already exists; choose a new directory")
+        if mode == "live":
+            from mllm_docqa.core import DocumentAnalyzer
+            analyzer = DocumentAnalyzer()
+            config = analyzer.describe()
+        output = args.output or Path("artifacts/runs") / (
+            datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S.%fZ") + "-" + mode)
+        run = evaluate_rows(rows, args.dataset.resolve(), output, mode=mode, dataset_info=info,
+                            analyzer=analyzer, predictions=predictions, configuration=config)
+    except (OSError, ValueError, KeyError, RuntimeError, ImportError) as exc:
+        parser.exit(2, f"Evaluation could not start/finish: {exc}\n")
+    print(f"\n{run['claim']}\nReport: {output / 'summary.md'}")
+    print(f"Field accuracy: {run['field_accuracy']:.2%}; failed documents: {run['failed_examples']}")
+    return 1 if run["failed_examples"] else 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

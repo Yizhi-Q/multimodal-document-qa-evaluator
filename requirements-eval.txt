@@ -1,0 +1,4 @@
+# Public dataset preparation; inference dependencies are separate.
+huggingface-hub>=0.28,<1
+pyarrow>=18
+Pillow>=10.0
