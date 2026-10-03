@@ -21,18 +21,50 @@ def compare(paths):
         if run["runtime"]["source_sha256"] != runs[0]["runtime"]["source_sha256"]:
             raise ValueError("Different evaluation code; re-run with the same version")
     lines = ["# Model comparison", "", "Same data, document selection, and evaluator source.", "",
-             "| Run | Model | 4-bit | Field accuracy | Document accuracy | Failed | Mean wall seconds |",
-             "|---|---|---|---:|---:|---:|---:|"]
+             "| Run | Model | 4-bit | Receipt profile | Recheck | Max pixels | Field accuracy | Document accuracy | Failed | Mean wall seconds |",
+             "|---|---|---|---|---|---:|---:|---:|---:|---:|"]
     for index, run in enumerate(runs, 1):
         config = run["configuration"]
         elapsed = run["performance"]["successful_examples_mean_wall_seconds"]
         timing = f"{elapsed:.3f}" if elapsed is not None else "n/a"
         lines.append(f"| {index} | {config.get('model', 'unknown')} | {config.get('load_in_4bit', 'n/a')} | "
+                     f"{config.get('receipt_profile', 'baseline')} | {config.get('receipt_recheck', 'none')} | {config.get('max_pixels', 'n/a')} | "
                      f"{run['field_accuracy']:.2%} | {run['document_accuracy']:.2%} | "
                      f"{run['failed_examples']} | {timing} |")
+    for index, candidate in enumerate(runs[1:], 2):
+        counts = paired_changes(runs[0], candidate)
+        lines += ["", f"## Paired changes: run 1 → run {index}", "",
+                  "| Field | Previously wrong, now correct | Previously correct, now wrong |",
+                  "|---|---:|---:|"]
+        for name, bucket in counts.items():
+            lines.append(f"| {name} | {bucket['improved']} | {bucket['regressed']} |")
     lines += ["", "Latency includes preprocessing, generation and parsing; model loading is excluded.",
               "The first inference is included. Check GPU, pixel/token limits and package versions before interpreting speed.", ""]
     return "\n".join(lines)
+
+
+def paired_changes(baseline, candidate):
+    def indexed(run):
+        records = {row["id"]: row for row in run["results"]}
+        selected = run["dataset"]["selected_ids"]
+        if len(records) != len(run["results"]) or set(records) != set(selected):
+            raise ValueError("Run results do not match the recorded document selection")
+        return records
+
+    first, second = indexed(baseline), indexed(candidate)
+    if set(first) != set(second):
+        raise ValueError("Different document selections")
+    counts = {}
+    for item_id in baseline["dataset"]["selected_ids"]:
+        before = first[item_id]["score"]["field_results"]
+        after = second[item_id]["score"]["field_results"]
+        if set(before) != set(after):
+            raise ValueError("Different scored fields")
+        for name in before:
+            bucket = counts.setdefault(name, {"improved": 0, "regressed": 0})
+            bucket["improved"] += int(not before[name] and after[name])
+            bucket["regressed"] += int(before[name] and not after[name])
+    return counts
 
 
 if __name__ == "__main__":

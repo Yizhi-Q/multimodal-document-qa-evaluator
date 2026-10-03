@@ -1,0 +1,2195 @@
+{
+  "report_version": 2,
+  "mode": "live",
+  "claim": "Live model inference on the specified dataset",
+  "created_at_utc": "2026-10-03T21:11:10.801985+00:00",
+  "dataset": {
+    "annotations_sha256": "d31fa555d77fd2c29a1a0d3116806b7d4b62553532709c92407c83d37b1e3530",
+    "fingerprint": "c92e4c28c106979227554845f4c88d5d0b59e926ecfd5ec39bddc391b2afd800",
+    "examples": 100,
+    "image_sha256": {
+      "cord-validation-0000": "7e9c5999304626e8332f5ae6c08fb54404a8efc0b78b7e9e1bfb49cfeab9ece2",
+      "cord-validation-0001": "44e0d44cd038364d7c84d29483e60cf70a903a8923e2e2e04ea85dbe71e9577f",
+      "cord-validation-0002": "03ed31610e4717e2123e90339b9474f947c695a0adb256d4f8658a9b60bc7f72",
+      "cord-validation-0003": "4b545d15e6d1c5be55b6ad7356fe7fe8607fbc058cb8e606cfe2c1a93f1e155b",
+      "cord-validation-0004": "ea117e62422b60ab86c950ccb9e56e98ff3623338973acfc42f400db15df293e",
+      "cord-validation-0005": "b7f790e5d7b9afde0926a2bb398fe798fe9d6159d573321b6fb92dd2f9c49f1d",
+      "cord-validation-0006": "20a08eeb3f5731f5115107196a0cb88d6e469dec2118c086815fe64ed02f0954",
+      "cord-validation-0007": "bd6a0a501d15b44e0fc8bf27da872cc9122e8388c129b33ef0c9db756501632b",
+      "cord-validation-0008": "2914013bee55a2f73e89fc2df2c8815deac5256790878e9c4bee49aff1ea81e6",
+      "cord-validation-0009": "d77df9aca5fcc6b75b2860e87db907fc47783498316aac4d15f6393d3ec4111e",
+      "cord-validation-0010": "bf06842b745c24cc263276daba44d1fe70fba6cbe3cdb925e4b65d6aaa8529a9",
+      "cord-validation-0011": "e73bd5d782534d1d36c50cc3527b17c79f8db158c265399f01b7d6130291d1c6",
+      "cord-validation-0012": "a032266b8b01b891af8b54013de4f0202f7f61b05645120dbb0c01ed01f303d7",
+      "cord-validation-0013": "af099174ea03521606cf76096665532d7489f2ca2f503140daf62b6c59582167",
+      "cord-validation-0014": "636b5c6c725da192447f3e79a27accf8d874464786d2d6fbb04d6422c172966d",
+      "cord-validation-0015": "4026bb2696f409952b98bada123309bcd776fd80c4379a9c512c3a3bbb65f217",
+      "cord-validation-0016": "1553b95ff2e48fa85fd6763b3820a0c39446110758ba1fc50b4a22e541d9e704",
+      "cord-validation-0017": "666a75406339220379432b2d98339caa89e92a5aceb0c211f1bbdb58585a8614",
+      "cord-validation-0018": "63e65d05f2be65e3e20ef65027c6bb98dd2c699b91a3c184d5718ae189be24fd",
+      "cord-validation-0019": "f0657bcd28e5c78835a6db8addbbe9dde894bc7097bd747fa41345b4421b9f2a",
+      "cord-validation-0020": "0a8100ebe57ee12859e8f0c2d8cad6bb06d3cbb13d38b0954eb8bf0cf5226a28",
+      "cord-validation-0021": "842515c3608c768d09d897e7996be0cedc4173f78ed7f8c8995bccaee9d297ba",
+      "cord-validation-0022": "b335696aaeb1ba1a607e87cd7acf76798dbc65a188b2f38e347473a762aba087",
+      "cord-validation-0023": "5ae40a38e1c1a5a333e096c9ae469efba68d67f4340fdc8489eec6209b64998d",
+      "cord-validation-0024": "3c1d1b62035d3eccda509fc755348df2579fd01036dc0d2d6b6231a4b0470cb4",
+      "cord-validation-0025": "bab821d7cddf20a4216966c0e113e80b59afef8824c0581fe96cd630dbd69d0a",
+      "cord-validation-0026": "6c8adbbff53fa60172965e75117e3f74a45ddf20972ea36f44c4b0c7041ecc44",
+      "cord-validation-0027": "24c79cb6672bb16f58c76b109d8a040ce16f612c0dccb8b623f81b827e3a5c4e",
+      "cord-validation-0028": "2db8820eecfbf68488789b20dcbb2012a050fe15e69ff3721e6b2c3602b14eea",
+      "cord-validation-0029": "d05f83d884a9e4b9e7e29ea5b6168173e18b73c1389275a33596b158518eea8a",
+      "cord-validation-0030": "207ed4b01106423cb7222a9d0e6c665ea8927ee36daf9a95f6f95b03165052f7",
+      "cord-validation-0031": "be4af2a59a527d21723781b12d34f623a7502ae83d087574fd12abf00ba4bebc",
+      "cord-validation-0032": "67fcad56dd671d03aea6b79bb4eb1e08969cee812e085198bc2828624461915b",
+      "cord-validation-0033": "5d8eac71c36e84043616d3cd7033b9255b2572dbf62ec2a79e67d30981f66d4a",
+      "cord-validation-0034": "722e0871e6c5ae27d50669fa8b34e702ed552c0cc392738a61d2c72d0fa9b27e",
+      "cord-validation-0035": "f6c0331002979b939a423970e531b7ec1827862556cb47f5e1a83790fe729059",
+      "cord-validation-0036": "70c7919242cd4d586b1b8d523e2cbf23e2bd515d64594ec70111663e93a4b118",
+      "cord-validation-0037": "cc755c503a17dfe50a99fdeace3a2615fd0edadf55c17faeeee20ceb033e75ab",
+      "cord-validation-0038": "15b1798cdf62f50609eecedaa9c1aac1af844fb23f181b3cc4ddc98fb99265bc",
+      "cord-validation-0039": "7986bf577fb4c935fe143bd37d4c1fb313adc126bc33ea33de725d266ae5e43d",
+      "cord-validation-0040": "5a3cd6650d165780f5b16604c7ad068ad2274df510e0e9c2e50b899262710857",
+      "cord-validation-0041": "c943c75d3257f3674d62a5d61b611423f6303ff92e02ab004447bfc4ad4566ec",
+      "cord-validation-0042": "69e757955b63b3e3e9ac0dc2f8329748a6d7d68462cb9b5b1647b6b10f8085b2",
+      "cord-validation-0043": "4dd9e349f578af88a6b3f5b71398817115744d1c191f0eb166ae7c8ceb38a80d",
+      "cord-validation-0044": "be4ade251e33b2ee1c1951836b30055c8400e8399598e182804bfda87c7972ac",
+      "cord-validation-0045": "22499a593913e33a221da60f817629e54036084636eecdf517e03003956b79f1",
+      "cord-validation-0046": "3267dbaeff7bdc77d73daa8ccff988ab93e4d1f9131428ae95add7e0c9029365",
+      "cord-validation-0047": "a190e11453317451751aa8a1ecdbc2da14d9f65593eaf2aff55f4b6fb28bc4f4",
+      "cord-validation-0048": "acf37a1f93837dac5ecb4bd254c2d7c2cc4e8b5e91d5c233ee8448d48a1233cd",
+      "cord-validation-0049": "8e65b98431f7fad88f8b3d98b398ad1d6ebb8b126f0892601df0887904d1dcff",
+      "cord-validation-0050": "677050a4d57d6ec61d5a53a61339e6e7f98b008f070d325ae01e88e13c8d3df1",
+      "cord-validation-0051": "1f80382abd8884e3c445c1b1dcb54abaa13b51209f0accdc2041033779f85989",
+      "cord-validation-0052": "8547c6827e3263ad925a5ba304f3bc92f14339a8d8f27368a4cbd517b9d77dca",
+      "cord-validation-0053": "6a6a1af20534bd89b40b1b2ff0059c634edb1e249292698df040cdee3d8b833c",
+      "cord-validation-0054": "f568b2e12bee46acdef504fd2aa363a2f69f64ad33cf8e2ba4f514a2447f11c9",
+      "cord-validation-0055": "b3ca4071f201be4e87e9f6e94c7213b2ba9a0d13281b56b4f3f7bb47dfe8c574",
+      "cord-validation-0056": "b43ed3f2036dbf4fd9f7703ed10bdcd296dbdd3a5c301faa1473102acab236c5",
+      "cord-validation-0057": "6f0464448cf8fbfa4022c7d4eab440113d387053f3f5786a6de858a41cc533bb",
+      "cord-validation-0058": "9d1d796483301ee870d2e4cd07448d3b76b05cac424f4bfc2731c78c6e6509bf",
+      "cord-validation-0059": "b8379a5071340d037850e0c5a66e195826b727cbc5fe4792990be8d1c307125b",
+      "cord-validation-0060": "8405214cc76e5838637cb6139a6fe9a1fa8f92c9ce256d1570e77e0cfdf5c03d",
+      "cord-validation-0061": "77d047b9791ff4667bf85b0b86448daf154af15660686cf72047d9db407b5ed0",
+      "cord-validation-0062": "283fb446d249e16cd39a91df7e644e426bc5de83ad9cc9ffa21fb202d6586fd6",
+      "cord-validation-0063": "6060bbfcda89852e66b1398f75ed079a272e60149f79e348988e22ce681aca2b",
+      "cord-validation-0064": "11f35e9e228c8c08ebbb51bcbd8682676d54f3d62c15a0d2279c04e3e27e1f46",
+      "cord-validation-0065": "540b29a5fb2a5391af8ba55d0b33dbff25252885ce2c8626dd2e1c5d6c6c6b47",
+      "cord-validation-0066": "24214da6184bbbac56efc64ee1e494c27262907f8dd3625b4f035b2de06befab",
+      "cord-validation-0067": "532b1dc9920c96234a772d00b346adcbd675eac4101b6cb1040580f91b05f78c",
+      "cord-validation-0068": "76eb311f2cc9c40b536e9272be829c77437a634632dfaa473617dd70e9f72d2f",
+      "cord-validation-0069": "bc55309cf045aba178fc4e82d49aad5b79cfaaefbf72a657824f6024c2948299",
+      "cord-validation-0070": "ef54763ce224fb2bafe972b11d2509fcb46486e652d0354fc1a070dd7b48a806",
+      "cord-validation-0071": "9e2660427f0d358a692bcbd356c58d8e3f7868868745c27fbbc27d531b0b7a0c",
+      "cord-validation-0072": "38fb0aed7ec2f3d1325640694a8f7de6e01166ccf83268212a11fc238cb0819b",
+      "cord-validation-0073": "f7812499a0643ba3a3b6e632dd8be2ffa811afdfdc60f2faf0de33a216c4ad5d",
+      "cord-validation-0074": "6596ecb74d348722ef76a21676cd5e5b190e5b48478b4a5ca2eea4b5ea2d87b3",
+      "cord-validation-0075": "868384df346c74090e9057efcfc6a09d6aa7051ded82bd70b8dd54ca79b4a0a4",
+      "cord-validation-0076": "3574c4f0d299132480fd4d7ed5d6c84b66b2bd2f328159efb6452105805c85fb",
+      "cord-validation-0077": "a5e2559901b5e53ee7106ae9e95330abc90b3a4fca6b7e7b89772e03dac68a24",
+      "cord-validation-0078": "ff887b3f96fe7cf4b40186a73bf85ae97d6a55c6c0758b15e23d6bbed873366b",
+      "cord-validation-0079": "1b81ec0b7a972b994b5462b4e99384a6aab0c8f237897a673f5214348231c5fc",
+      "cord-validation-0080": "cdade62fc84e7ac7113273eb15532753878d906075b9c694bb70fe7326542ca9",
+      "cord-validation-0081": "95ae4a6a85306702b9c7eb173bb20e0615b4f8f95887e29f49319c328ec6ea25",
+      "cord-validation-0082": "62734eefaa9290744382751856eb82b3736f79162a900ffb873607ebd7adcd99",
+      "cord-validation-0083": "9476afb34a97adaa6d66c84d36bf7d32e7d270162ab4eaecacfd384a9ccb3f6b",
+      "cord-validation-0084": "48a48e07f9ea9ba56ee7a6d7e8e617cabe8db2edcf81a16c80ff639650f4db34",
+      "cord-validation-0085": "afddaa5f6ea2815fd9c6a35d0598749d2dc73cff3e06d0bb245203429e22d4aa",
+      "cord-validation-0086": "6e530114b8214d8f8e305b19ee9a4ffacef47fbf27baec4301f6a0dcbce94c46",
+      "cord-validation-0087": "745f9eca252a17bd61717269a6c4f2635eb375baa6b4d00a92c86775b68cdcd1",
+      "cord-validation-0088": "fc4b1e35ed5a595ea615fb2d2a1886b77f74f920723dd142c77c06c3179fca9a",
+      "cord-validation-0089": "5ada488d03114436de363c113b02f1a5164b706c8e22684ac5fdb954c40e4ad0",
+      "cord-validation-0090": "ae36e626a52ff819b94d1d172974c4faddf73242b02d41f69bc37cdeacefe6e3",
+      "cord-validation-0091": "53aa229907592a0e25e8936b1267c50c0725c5d53a80f0c78e891c0586f6c9d8",
+      "cord-validation-0092": "bb8e3589de2c3ca139ede420e1d00300a836abb526df7e19f86af23253731e24",
+      "cord-validation-0093": "fbe4059934fc2c88a3c87d5d99f5d1a24487524764432b681532a391a72e933a",
+      "cord-validation-0094": "a9fbf7bcac8a68408e7a1d5cab185d5947259a31cdc03dddda3afc7c336a7135",
+      "cord-validation-0095": "f5921c0652e4a293dd901fbc9738ce2f2099f4f375b6d394f4c378ab16bbbcb7",
+      "cord-validation-0096": "0be79438d4bf4c20fb08e575c1b993f107051b366265733a3642e65a11b81214",
+      "cord-validation-0097": "aaebb4a48f46bc9c1af4442117d10a88caab904770bbb88436246957c2cd7aaa",
+      "cord-validation-0098": "8dbe14cd90e4cb13fa8df41908b9e595509e91dc2b0e5a2d2eebe13a7535fa0b",
+      "cord-validation-0099": "dda70416dce57da701ab39aa913e6a05339f6324a4b37825929ee0d96a237f77"
+    },
+    "selection": {
+      "offset": 0,
+      "limit": 20,
+      "order": "annotation file order"
+    },
+    "selected_ids": [
+      "cord-validation-0000",
+      "cord-validation-0001",
+      "cord-validation-0002",
+      "cord-validation-0003",
+      "cord-validation-0004",
+      "cord-validation-0005",
+      "cord-validation-0006",
+      "cord-validation-0007",
+      "cord-validation-0008",
+      "cord-validation-0009",
+      "cord-validation-0010",
+      "cord-validation-0011",
+      "cord-validation-0012",
+      "cord-validation-0013",
+      "cord-validation-0014",
+      "cord-validation-0015",
+      "cord-validation-0016",
+      "cord-validation-0017",
+      "cord-validation-0018",
+      "cord-validation-0019"
+    ],
+    "selected_examples": 20
+  },
+  "configuration": {
+    "backend": "transformers",
+    "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+    "model_revision": "66285546d2b821cf421d4f5eb2576359d3770cd3",
+    "load_in_4bit": true,
+    "compute_dtype": "bfloat16",
+    "processor_use_fast": true,
+    "attention_implementation": "sdpa",
+    "batch_size": 1,
+    "min_pixels": 200704,
+    "max_pixels": 802816,
+    "max_new_tokens": 512,
+    "do_sample": false,
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "system_prompt": "Analyse the document image using only visible evidence.\nReturn one valid JSON object with no surrounding prose. Do not guess unreadable values.\nUse null for missing scalar fields. Return this shape:\n{\n  \"document_type\": \"string or null\",\n  \"fields\": {\"requested_field\": \"value or null\"},\n  \"answer\": \"string\",\n  \"evidence\": [{\"field\": \"field name\", \"text\": \"visible snippet\"}],\n  \"uncertainties\": [\"description\"],\n  \"confidence\": 0.0\n}\n",
+    "receipt_profile": "baseline",
+    "receipt_recheck": "invalid-amount-v1"
+  },
+  "runtime": {
+    "python": "3.12.3",
+    "platform": "Linux-5.15.0-94-generic-x86_64-with-glibc2.35",
+    "packages": {
+      "torch": "2.8.0+cu128",
+      "torchvision": "0.23.0+cu128",
+      "transformers": "4.57.6",
+      "bitsandbytes": "0.50.2",
+      "qwen-vl-utils": "0.0.14",
+      "accelerate": "1.15.0",
+      "huggingface-hub": "0.36.2",
+      "pyarrow": "25.0.1",
+      "openai": "3.24.0",
+      "Pillow": "11.3.0"
+    },
+    "source_sha256": "ac5d4caf8ece4bb4bc3d83754f2a637280f4b24a0bba531f3299bddf19fba032",
+    "git_commit": null
+  },
+  "results": [
+    {
+      "id": "cord-validation-0000",
+      "image": "images/cord-validation-0000.png",
+      "prediction": {
+        "document_type": null,
+        "fields": {
+          "subtotal_amount": "16,500",
+          "tax_amount": "50,000",
+          "service_charge": "4,500",
+          "total_amount": "45,500",
+          "cash_amount": "50,000",
+          "change_amount": "4,500"
+        },
+        "answer": "",
+        "evidence": [],
+        "uncertainties": [],
+        "confidence": 0.0,
+        "raw_output": "```json\n{\n  \"subtotal_amount\": \"16,500\",\n  \"tax_amount\": \"50,000\",\n  \"service_charge\": \"4,500\",\n  \"total_amount\": \"45,500\",\n  \"cash_amount\": \"50,000\",\n  \"change_amount\": \"4,500\"\n}\n```",
+        "metadata": {
+          "backend": "transformers",
+          "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+          "load_in_4bit": true,
+          "compute_dtype": "bfloat16",
+          "latency_seconds": 2.657,
+          "peak_gpu_memory_gib": 2.457
+        },
+        "review_flags": []
+      },
+      "error": null,
+      "score": {
+        "correct": 3,
+        "total": 3,
+        "accuracy": 1.0,
+        "field_results": {
+          "total_amount": true,
+          "cash_amount": true,
+          "change_amount": true
+        },
+        "details": {
+          "total_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "45,500",
+            "predicted": "45,500",
+            "expected_present": true
+          },
+          "cash_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "50,000",
+            "predicted": "50,000",
+            "expected_present": true
+          },
+          "change_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "4,500",
+            "predicted": "4,500",
+            "expected_present": true
+          }
+        }
+      },
+      "raw_error_output": null,
+      "wall_seconds": 2.737932
+    },
+    {
+      "id": "cord-validation-0001",
+      "image": "images/cord-validation-0001.png",
+      "prediction": {
+        "document_type": null,
+        "fields": {
+          "subtotal_amount": "23.000",
+          "tax_amount": "27.000",
+          "service_charge": "23.000",
+          "total_amount": "50.000",
+          "cash_amount": "50.000",
+          "change_amount": "27.000"
+        },
+        "answer": "",
+        "evidence": [],
+        "uncertainties": [],
+        "confidence": 0.0,
+        "raw_output": "```json\n{\n  \"subtotal_amount\": \"23.000\",\n  \"tax_amount\": \"27.000\",\n  \"service_charge\": \"23.000\",\n  \"total_amount\": \"50.000\",\n  \"cash_amount\": \"50.000\",\n  \"change_amount\": \"27.000\"\n}\n```",
+        "metadata": {
+          "backend": "transformers",
+          "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+          "load_in_4bit": true,
+          "compute_dtype": "bfloat16",
+          "latency_seconds": 2.186,
+          "peak_gpu_memory_gib": 2.449
+        },
+        "review_flags": []
+      },
+      "error": null,
+      "score": {
+        "correct": 2,
+        "total": 3,
+        "accuracy": 0.6666666666666666,
+        "field_results": {
+          "total_amount": false,
+          "cash_amount": true,
+          "change_amount": true
+        },
+        "details": {
+          "total_amount": {
+            "correct": false,
+            "category": "value_mismatch",
+            "expected": "23.000",
+            "predicted": "50.000",
+            "expected_present": true
+          },
+          "cash_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "50.000",
+            "predicted": "50.000",
+            "expected_present": true
+          },
+          "change_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "27.000",
+            "predicted": "27.000",
+            "expected_present": true
+          }
+        }
+      },
+      "raw_error_output": null,
+      "wall_seconds": 2.263751
+    },
+    {
+      "id": "cord-validation-0002",
+      "image": "images/cord-validation-0002.png",
+      "prediction": {
+        "document_type": null,
+        "fields": {
+          "subtotal_amount": "18,181",
+          "tax_amount": null,
+          "service_charge": "PB1: 1,818",
+          "total_amount": "20,000",
+          "cash_amount": "20,000",
+          "change_amount": "80,000"
+        },
+        "answer": "",
+        "evidence": [],
+        "uncertainties": [],
+        "confidence": 0.0,
+        "raw_output": "```json\n{\n  \"subtotal_amount\": \"18,181\",\n  \"tax_amount\": \"10%\",\n  \"service_charge\": \"PB1: 1,818\",\n  \"total_amount\": \"20,000\",\n  \"cash_amount\": \"20,000\",\n  \"change_amount\": \"80,000\"\n}\n```",
+        "metadata": {
+          "backend": "transformers",
+          "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+          "load_in_4bit": true,
+          "compute_dtype": "bfloat16",
+          "latency_seconds": 2.574,
+          "peak_gpu_memory_gib": 2.372,
+          "model_calls": 2,
+          "recheck_policy": "invalid-amount-v1"
+        },
+        "review_flags": [],
+        "initial_prediction": {
+          "document_type": null,
+          "fields": {
+            "subtotal_amount": "18,181",
+            "tax_amount": "10%",
+            "service_charge": "PB1: 1,818",
+            "total_amount": "20,000",
+            "cash_amount": "20,000",
+            "change_amount": "80,000"
+          },
+          "answer": "",
+          "evidence": [],
+          "uncertainties": [],
+          "confidence": 0.0,
+          "raw_output": "```json\n{\n  \"subtotal_amount\": \"18,181\",\n  \"tax_amount\": \"10%\",\n  \"service_charge\": \"PB1: 1,818\",\n  \"total_amount\": \"20,000\",\n  \"cash_amount\": \"20,000\",\n  \"change_amount\": \"80,000\"\n}\n```",
+          "metadata": {
+            "backend": "transformers",
+            "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+            "load_in_4bit": true,
+            "compute_dtype": "bfloat16",
+            "latency_seconds": 2.158,
+            "peak_gpu_memory_gib": 2.372
+          }
+        },
+        "recheck_attempt": {
+          "requested_fields": [
+            "tax_amount"
+          ],
+          "question": "Re-read only the requested monetary amounts from the receipt image. Copy each amount exactly, including currency prefixes, commas, dots and printed zeroes. Percentages are rates, not amounts. If a monetary amount is absent or unreadable, return JSON null. Do not calculate a value.\ntax_amount: The printed monetary tax amount beside Tax, PPN or PB1. A percentage such as a tax-included notice is a rate, never a tax amount. If only a rate is printed, return null; do not calculate tax.",
+          "prediction": {
+            "document_type": null,
+            "fields": {
+              "tax_amount": null
+            },
+            "answer": "",
+            "evidence": [],
+            "uncertainties": [],
+            "confidence": 0.0,
+            "raw_output": "```json\n{\n  \"tax_amount\": null\n}\n```",
+            "metadata": {
+              "backend": "transformers",
+              "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+              "load_in_4bit": true,
+              "compute_dtype": "bfloat16",
+              "latency_seconds": 0.416,
+              "peak_gpu_memory_gib": 2.369
+            }
+          },
+          "error": null,
+          "accepted_fields": [
+            "tax_amount"
+          ],
+          "wall_seconds": 0.433519
+        }
+      },
+      "error": null,
+      "score": {
+        "correct": 3,
+        "total": 5,
+        "accuracy": 0.6,
+        "field_results": {
+          "subtotal_amount": true,
+          "tax_amount": false,
+          "total_amount": true,
+          "cash_amount": false,
+          "change_amount": true
+        },
+        "details": {
+          "subtotal_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "18,181",
+            "predicted": "18,181",
+            "expected_present": true
+          },
+          "tax_amount": {
+            "correct": false,
+            "category": "missing_value",
+            "expected": "1,818",
+            "predicted": null,
+            "expected_present": true
+          },
+          "total_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "20,000",
+            "predicted": "20,000",
+            "expected_present": true
+          },
+          "cash_amount": {
+            "correct": false,
+            "category": "value_mismatch",
+            "expected": "100,000",
+            "predicted": "20,000",
+            "expected_present": true
+          },
+          "change_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "80,000",
+            "predicted": "80,000",
+            "expected_present": true
+          }
+        }
+      },
+      "raw_error_output": null,
+      "wall_seconds": 2.608995
+    },
+    {
+      "id": "cord-validation-0003",
+      "image": "images/cord-validation-0003.png",
+      "prediction": {
+        "document_type": null,
+        "fields": {
+          "subtotal_amount": "28,000",
+          "tax_amount": null,
+          "service_charge": "0",
+          "total_amount": "28,000",
+          "cash_amount": "28,000",
+          "change_amount": "0"
+        },
+        "answer": "",
+        "evidence": [],
+        "uncertainties": [],
+        "confidence": 0.0,
+        "raw_output": "```json\n{\n  \"subtotal_amount\": \"28,000\",\n  \"tax_amount\": \"70%\",\n  \"service_charge\": \"0\",\n  \"total_amount\": \"28,000\",\n  \"cash_amount\": \"28,000\",\n  \"change_amount\": \"0\"\n}\n```",
+        "metadata": {
+          "backend": "transformers",
+          "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+          "load_in_4bit": true,
+          "compute_dtype": "bfloat16",
+          "latency_seconds": 2.353,
+          "peak_gpu_memory_gib": 2.455,
+          "model_calls": 2,
+          "recheck_policy": "invalid-amount-v1"
+        },
+        "review_flags": [],
+        "initial_prediction": {
+          "document_type": null,
+          "fields": {
+            "subtotal_amount": "28,000",
+            "tax_amount": "70%",
+            "service_charge": "0",
+            "total_amount": "28,000",
+            "cash_amount": "28,000",
+            "change_amount": "0"
+          },
+          "answer": "",
+          "evidence": [],
+          "uncertainties": [],
+          "confidence": 0.0,
+          "raw_output": "```json\n{\n  \"subtotal_amount\": \"28,000\",\n  \"tax_amount\": \"70%\",\n  \"service_charge\": \"0\",\n  \"total_amount\": \"28,000\",\n  \"cash_amount\": \"28,000\",\n  \"change_amount\": \"0\"\n}\n```",
+          "metadata": {
+            "backend": "transformers",
+            "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+            "load_in_4bit": true,
+            "compute_dtype": "bfloat16",
+            "latency_seconds": 1.894,
+            "peak_gpu_memory_gib": 2.455
+          }
+        },
+        "recheck_attempt": {
+          "requested_fields": [
+            "tax_amount"
+          ],
+          "question": "Re-read only the requested monetary amounts from the receipt image. Copy each amount exactly, including currency prefixes, commas, dots and printed zeroes. Percentages are rates, not amounts. If a monetary amount is absent or unreadable, return JSON null. Do not calculate a value.\ntax_amount: The printed monetary tax amount beside Tax, PPN or PB1. A percentage such as a tax-included notice is a rate, never a tax amount. If only a rate is printed, return null; do not calculate tax.",
+          "prediction": {
+            "document_type": null,
+            "fields": {
+              "tax_amount": null
+            },
+            "answer": "",
+            "evidence": [],
+            "uncertainties": [],
+            "confidence": 0.0,
+            "raw_output": "```json\n{\n  \"tax_amount\": null\n}\n```",
+            "metadata": {
+              "backend": "transformers",
+              "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+              "load_in_4bit": true,
+              "compute_dtype": "bfloat16",
+              "latency_seconds": 0.459,
+              "peak_gpu_memory_gib": 2.455
+            }
+          },
+          "error": null,
+          "accepted_fields": [
+            "tax_amount"
+          ],
+          "wall_seconds": 0.782905
+        }
+      },
+      "error": null,
+      "score": {
+        "correct": 4,
+        "total": 5,
+        "accuracy": 0.8,
+        "field_results": {
+          "subtotal_amount": true,
+          "tax_amount": false,
+          "total_amount": true,
+          "cash_amount": true,
+          "change_amount": true
+        },
+        "details": {
+          "subtotal_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "28,000",
+            "predicted": "28,000",
+            "expected_present": true
+          },
+          "tax_amount": {
+            "correct": false,
+            "category": "missing_value",
+            "expected": "0",
+            "predicted": null,
+            "expected_present": true
+          },
+          "total_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "28,000",
+            "predicted": "28,000",
+            "expected_present": true
+          },
+          "cash_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "28,000",
+            "predicted": "28,000",
+            "expected_present": true
+          },
+          "change_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "0",
+            "predicted": "0",
+            "expected_present": true
+          }
+        }
+      },
+      "raw_error_output": null,
+      "wall_seconds": 2.999098
+    },
+    {
+      "id": "cord-validation-0004",
+      "image": "images/cord-validation-0004.png",
+      "prediction": {
+        "document_type": null,
+        "fields": {
+          "subtotal_amount": "41,000",
+          "tax_amount": "0",
+          "service_charge": "0",
+          "total_amount": "41,000",
+          "cash_amount": "50.000",
+          "change_amount": "9,000"
+        },
+        "answer": "",
+        "evidence": [],
+        "uncertainties": [],
+        "confidence": 0.0,
+        "raw_output": "```json\n{\n  \"subtotal_amount\": \"41,000\",\n  \"tax_amount\": \"0\",\n  \"service_charge\": \"0\",\n  \"total_amount\": \"41,000\",\n  \"cash_amount\": \"50.000\",\n  \"change_amount\": \"9,000\"\n}\n```",
+        "metadata": {
+          "backend": "transformers",
+          "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+          "load_in_4bit": true,
+          "compute_dtype": "bfloat16",
+          "latency_seconds": 1.876,
+          "peak_gpu_memory_gib": 2.401
+        },
+        "review_flags": []
+      },
+      "error": null,
+      "score": {
+        "correct": 3,
+        "total": 4,
+        "accuracy": 0.75,
+        "field_results": {
+          "subtotal_amount": true,
+          "total_amount": true,
+          "cash_amount": true,
+          "change_amount": false
+        },
+        "details": {
+          "subtotal_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "41,000",
+            "predicted": "41,000",
+            "expected_present": true
+          },
+          "total_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "41,000",
+            "predicted": "41,000",
+            "expected_present": true
+          },
+          "cash_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "50.000",
+            "predicted": "50.000",
+            "expected_present": true
+          },
+          "change_amount": {
+            "correct": false,
+            "category": "value_mismatch",
+            "expected": ":9,000",
+            "predicted": "9,000",
+            "expected_present": true
+          }
+        }
+      },
+      "raw_error_output": null,
+      "wall_seconds": 1.911553
+    },
+    {
+      "id": "cord-validation-0005",
+      "image": "images/cord-validation-0005.png",
+      "prediction": {
+        "document_type": null,
+        "fields": {
+          "subtotal_amount": "1.00",
+          "tax_amount": "7.273",
+          "service_charge": null,
+          "total_amount": "8.000",
+          "cash_amount": "8.000",
+          "change_amount": "0.000"
+        },
+        "answer": "",
+        "evidence": [],
+        "uncertainties": [],
+        "confidence": 0.0,
+        "raw_output": "```json\n{\n  \"subtotal_amount\": \"1.00\",\n  \"tax_amount\": \"7.273\",\n  \"service_charge\": \"null\",\n  \"total_amount\": \"8.000\",\n  \"cash_amount\": \"8.000\",\n  \"change_amount\": \"0.000\"\n}\n```",
+        "metadata": {
+          "backend": "transformers",
+          "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+          "load_in_4bit": true,
+          "compute_dtype": "bfloat16",
+          "latency_seconds": 2.627,
+          "peak_gpu_memory_gib": 2.449,
+          "model_calls": 2,
+          "recheck_policy": "invalid-amount-v1"
+        },
+        "review_flags": [],
+        "initial_prediction": {
+          "document_type": null,
+          "fields": {
+            "subtotal_amount": "1.00",
+            "tax_amount": "7.273",
+            "service_charge": "null",
+            "total_amount": "8.000",
+            "cash_amount": "8.000",
+            "change_amount": "0.000"
+          },
+          "answer": "",
+          "evidence": [],
+          "uncertainties": [],
+          "confidence": 0.0,
+          "raw_output": "```json\n{\n  \"subtotal_amount\": \"1.00\",\n  \"tax_amount\": \"7.273\",\n  \"service_charge\": \"null\",\n  \"total_amount\": \"8.000\",\n  \"cash_amount\": \"8.000\",\n  \"change_amount\": \"0.000\"\n}\n```",
+          "metadata": {
+            "backend": "transformers",
+            "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+            "load_in_4bit": true,
+            "compute_dtype": "bfloat16",
+            "latency_seconds": 2.168,
+            "peak_gpu_memory_gib": 2.449
+          }
+        },
+        "recheck_attempt": {
+          "requested_fields": [
+            "service_charge"
+          ],
+          "question": "Re-read only the requested monetary amounts from the receipt image. Copy each amount exactly, including currency prefixes, commas, dots and printed zeroes. Percentages are rates, not amounts. If a monetary amount is absent or unreadable, return JSON null. Do not calculate a value.\nservice_charge: The printed monetary service charge. A service percentage alone is not an amount; do not calculate it.",
+          "prediction": {
+            "document_type": null,
+            "fields": {
+              "service_charge": null
+            },
+            "answer": "",
+            "evidence": [],
+            "uncertainties": [],
+            "confidence": 0.0,
+            "raw_output": "```json\n{\n  \"service_charge\": null\n}\n```",
+            "metadata": {
+              "backend": "transformers",
+              "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+              "load_in_4bit": true,
+              "compute_dtype": "bfloat16",
+              "latency_seconds": 0.459,
+              "peak_gpu_memory_gib": 2.448
+            }
+          },
+          "error": null,
+          "accepted_fields": [
+            "service_charge"
+          ],
+          "wall_seconds": 0.538398
+        }
+      },
+      "error": null,
+      "score": {
+        "correct": 0,
+        "total": 4,
+        "accuracy": 0.0,
+        "field_results": {
+          "subtotal_amount": false,
+          "tax_amount": false,
+          "total_amount": false,
+          "cash_amount": false
+        },
+        "details": {
+          "subtotal_amount": {
+            "correct": false,
+            "category": "value_mismatch",
+            "expected": "7,273",
+            "predicted": "1.00",
+            "expected_present": true
+          },
+          "tax_amount": {
+            "correct": false,
+            "category": "value_mismatch",
+            "expected": "727",
+            "predicted": "7.273",
+            "expected_present": true
+          },
+          "total_amount": {
+            "correct": false,
+            "category": "value_mismatch",
+            "expected": "8,000",
+            "predicted": "8.000",
+            "expected_present": true
+          },
+          "cash_amount": {
+            "correct": false,
+            "category": "value_mismatch",
+            "expected": "8,000",
+            "predicted": "8.000",
+            "expected_present": true
+          }
+        }
+      },
+      "raw_error_output": null,
+      "wall_seconds": 2.780521
+    },
+    {
+      "id": "cord-validation-0006",
+      "image": "images/cord-validation-0006.png",
+      "prediction": {
+        "document_type": null,
+        "fields": {
+          "subtotal_amount": "19,000",
+          "tax_amount": "52,000",
+          "service_charge": "52,000",
+          "total_amount": "123,000",
+          "cash_amount": "123,000",
+          "change_amount": "0"
+        },
+        "answer": "",
+        "evidence": [],
+        "uncertainties": [],
+        "confidence": 0.0,
+        "raw_output": "```json\n{\n  \"subtotal_amount\": \"19,000\",\n  \"tax_amount\": \"52,000\",\n  \"service_charge\": \"52,000\",\n  \"total_amount\": \"123,000\",\n  \"cash_amount\": \"123,000\",\n  \"change_amount\": \"0\"\n}\n```",
+        "metadata": {
+          "backend": "transformers",
+          "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+          "load_in_4bit": true,
+          "compute_dtype": "bfloat16",
+          "latency_seconds": 2.163,
+          "peak_gpu_memory_gib": 2.457
+        },
+        "review_flags": []
+      },
+      "error": null,
+      "score": {
+        "correct": 1,
+        "total": 1,
+        "accuracy": 1.0,
+        "field_results": {
+          "total_amount": true
+        },
+        "details": {
+          "total_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "123,000",
+            "predicted": "123,000",
+            "expected_present": true
+          }
+        }
+      },
+      "raw_error_output": null,
+      "wall_seconds": 2.234335
+    },
+    {
+      "id": "cord-validation-0007",
+      "image": "images/cord-validation-0007.png",
+      "prediction": {
+        "document_type": null,
+        "fields": {
+          "subtotal_amount": "63,636",
+          "tax_amount": "9,545",
+          "service_charge": "5,409",
+          "total_amount": "59,500",
+          "cash_amount": "100,000",
+          "change_amount": "40,500"
+        },
+        "answer": "",
+        "evidence": [],
+        "uncertainties": [],
+        "confidence": 0.0,
+        "raw_output": "```json\n{\n  \"subtotal_amount\": \"63,636\",\n  \"tax_amount\": \"9,545\",\n  \"service_charge\": \"5,409\",\n  \"total_amount\": \"59,500\",\n  \"cash_amount\": \"100,000\",\n  \"change_amount\": \"40,500\"\n}\n```",
+        "metadata": {
+          "backend": "transformers",
+          "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+          "load_in_4bit": true,
+          "compute_dtype": "bfloat16",
+          "latency_seconds": 2.179,
+          "peak_gpu_memory_gib": 2.401
+        },
+        "review_flags": []
+      },
+      "error": null,
+      "score": {
+        "correct": 4,
+        "total": 5,
+        "accuracy": 0.8,
+        "field_results": {
+          "subtotal_amount": true,
+          "tax_amount": false,
+          "total_amount": true,
+          "cash_amount": true,
+          "change_amount": true
+        },
+        "details": {
+          "subtotal_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "63,636",
+            "predicted": "63,636",
+            "expected_present": true
+          },
+          "tax_amount": {
+            "correct": false,
+            "category": "value_mismatch",
+            "expected": "5,409",
+            "predicted": "9,545",
+            "expected_present": true
+          },
+          "total_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "59,500",
+            "predicted": "59,500",
+            "expected_present": true
+          },
+          "cash_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "100,000",
+            "predicted": "100,000",
+            "expected_present": true
+          },
+          "change_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "40,500",
+            "predicted": "40,500",
+            "expected_present": true
+          }
+        }
+      },
+      "raw_error_output": null,
+      "wall_seconds": 2.227053
+    },
+    {
+      "id": "cord-validation-0008",
+      "image": "images/cord-validation-0008.png",
+      "prediction": {
+        "document_type": null,
+        "fields": {
+          "subtotal_amount": "11,700",
+          "tax_amount": null,
+          "service_charge": null,
+          "total_amount": "11,700",
+          "cash_amount": "20,000",
+          "change_amount": "8,300"
+        },
+        "answer": "",
+        "evidence": [],
+        "uncertainties": [],
+        "confidence": 0.0,
+        "raw_output": "```json\n{\n  \"subtotal_amount\": \"11,700\",\n  \"tax_amount\": \"null\",\n  \"service_charge\": \"null\",\n  \"total_amount\": \"11,700\",\n  \"cash_amount\": \"20,000\",\n  \"change_amount\": \"8,300\"\n}\n```",
+        "metadata": {
+          "backend": "transformers",
+          "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+          "load_in_4bit": true,
+          "compute_dtype": "bfloat16",
+          "latency_seconds": 2.461,
+          "peak_gpu_memory_gib": 2.401,
+          "model_calls": 2,
+          "recheck_policy": "invalid-amount-v1"
+        },
+        "review_flags": [],
+        "initial_prediction": {
+          "document_type": null,
+          "fields": {
+            "subtotal_amount": "11,700",
+            "tax_amount": "null",
+            "service_charge": "null",
+            "total_amount": "11,700",
+            "cash_amount": "20,000",
+            "change_amount": "8,300"
+          },
+          "answer": "",
+          "evidence": [],
+          "uncertainties": [],
+          "confidence": 0.0,
+          "raw_output": "```json\n{\n  \"subtotal_amount\": \"11,700\",\n  \"tax_amount\": \"null\",\n  \"service_charge\": \"null\",\n  \"total_amount\": \"11,700\",\n  \"cash_amount\": \"20,000\",\n  \"change_amount\": \"8,300\"\n}\n```",
+          "metadata": {
+            "backend": "transformers",
+            "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+            "load_in_4bit": true,
+            "compute_dtype": "bfloat16",
+            "latency_seconds": 1.862,
+            "peak_gpu_memory_gib": 2.401
+          }
+        },
+        "recheck_attempt": {
+          "requested_fields": [
+            "tax_amount",
+            "service_charge"
+          ],
+          "question": "Re-read only the requested monetary amounts from the receipt image. Copy each amount exactly, including currency prefixes, commas, dots and printed zeroes. Percentages are rates, not amounts. If a monetary amount is absent or unreadable, return JSON null. Do not calculate a value.\ntax_amount: The printed monetary tax amount beside Tax, PPN or PB1. A percentage such as a tax-included notice is a rate, never a tax amount. If only a rate is printed, return null; do not calculate tax.\nservice_charge: The printed monetary service charge. A service percentage alone is not an amount; do not calculate it.",
+          "prediction": {
+            "document_type": null,
+            "fields": {
+              "tax_amount": null,
+              "service_charge": null
+            },
+            "answer": "",
+            "evidence": [],
+            "uncertainties": [],
+            "confidence": 0.0,
+            "raw_output": "```json\n{\n  \"tax_amount\": null,\n  \"service_charge\": null\n}\n```",
+            "metadata": {
+              "backend": "transformers",
+              "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+              "load_in_4bit": true,
+              "compute_dtype": "bfloat16",
+              "latency_seconds": 0.599,
+              "peak_gpu_memory_gib": 2.401
+            }
+          },
+          "error": null,
+          "accepted_fields": [
+            "tax_amount",
+            "service_charge"
+          ],
+          "wall_seconds": 0.628952
+        }
+      },
+      "error": null,
+      "score": {
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1.0,
+        "field_results": {
+          "subtotal_amount": true,
+          "total_amount": true,
+          "cash_amount": true,
+          "change_amount": true
+        },
+        "details": {
+          "subtotal_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "11,700",
+            "predicted": "11,700",
+            "expected_present": true
+          },
+          "total_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "11,700",
+            "predicted": "11,700",
+            "expected_present": true
+          },
+          "cash_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "20,000",
+            "predicted": "20,000",
+            "expected_present": true
+          },
+          "change_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "8,300",
+            "predicted": "8,300",
+            "expected_present": true
+          }
+        }
+      },
+      "raw_error_output": null,
+      "wall_seconds": 2.520677
+    },
+    {
+      "id": "cord-validation-0009",
+      "image": "images/cord-validation-0009.png",
+      "prediction": {
+        "document_type": null,
+        "fields": {
+          "subtotal_amount": "20.000",
+          "tax_amount": "0",
+          "service_charge": "0",
+          "total_amount": "20.000",
+          "cash_amount": "20.000",
+          "change_amount": "0"
+        },
+        "answer": "",
+        "evidence": [],
+        "uncertainties": [],
+        "confidence": 0.0,
+        "raw_output": "```json\n{\n  \"subtotal_amount\": \"20.000\",\n  \"tax_amount\": \"0\",\n  \"service_charge\": \"0\",\n  \"total_amount\": \"20.000\",\n  \"cash_amount\": \"20.000\",\n  \"change_amount\": \"0\"\n}\n```",
+        "metadata": {
+          "backend": "transformers",
+          "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+          "load_in_4bit": true,
+          "compute_dtype": "bfloat16",
+          "latency_seconds": 1.913,
+          "peak_gpu_memory_gib": 2.457
+        },
+        "review_flags": []
+      },
+      "error": null,
+      "score": {
+        "correct": 1,
+        "total": 3,
+        "accuracy": 0.3333333333333333,
+        "field_results": {
+          "total_amount": false,
+          "cash_amount": false,
+          "change_amount": true
+        },
+        "details": {
+          "total_amount": {
+            "correct": false,
+            "category": "value_mismatch",
+            "expected": "20,000",
+            "predicted": "20.000",
+            "expected_present": true
+          },
+          "cash_amount": {
+            "correct": false,
+            "category": "value_mismatch",
+            "expected": "20,000",
+            "predicted": "20.000",
+            "expected_present": true
+          },
+          "change_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "0",
+            "predicted": "0",
+            "expected_present": true
+          }
+        }
+      },
+      "raw_error_output": null,
+      "wall_seconds": 2.004951
+    },
+    {
+      "id": "cord-validation-0010",
+      "image": "images/cord-validation-0010.png",
+      "prediction": {
+        "document_type": null,
+        "fields": {
+          "subtotal_amount": "40.000",
+          "tax_amount": "20.000",
+          "service_charge": "60.000",
+          "total_amount": "60.000",
+          "cash_amount": "60.000",
+          "change_amount": "0"
+        },
+        "answer": "",
+        "evidence": [],
+        "uncertainties": [],
+        "confidence": 0.0,
+        "raw_output": "```json\n{\n  \"subtotal_amount\": \"40.000\",\n  \"tax_amount\": \"20.000\",\n  \"service_charge\": \"60.000\",\n  \"total_amount\": \"60.000\",\n  \"cash_amount\": \"60.000\",\n  \"change_amount\": \"0\"\n}\n```",
+        "metadata": {
+          "backend": "transformers",
+          "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+          "load_in_4bit": true,
+          "compute_dtype": "bfloat16",
+          "latency_seconds": 2.058,
+          "peak_gpu_memory_gib": 2.457
+        },
+        "review_flags": []
+      },
+      "error": null,
+      "score": {
+        "correct": 3,
+        "total": 3,
+        "accuracy": 1.0,
+        "field_results": {
+          "total_amount": true,
+          "cash_amount": true,
+          "change_amount": true
+        },
+        "details": {
+          "total_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "60.000",
+            "predicted": "60.000",
+            "expected_present": true
+          },
+          "cash_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "60.000",
+            "predicted": "60.000",
+            "expected_present": true
+          },
+          "change_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "0",
+            "predicted": "0",
+            "expected_present": true
+          }
+        }
+      },
+      "raw_error_output": null,
+      "wall_seconds": 2.129073
+    },
+    {
+      "id": "cord-validation-0011",
+      "image": "images/cord-validation-0011.png",
+      "prediction": {
+        "document_type": null,
+        "fields": {
+          "subtotal_amount": "81.000",
+          "tax_amount": "8.100",
+          "service_charge": "8.100",
+          "total_amount": "89.100",
+          "cash_amount": "89.100",
+          "change_amount": "0"
+        },
+        "answer": "",
+        "evidence": [],
+        "uncertainties": [],
+        "confidence": 0.0,
+        "raw_output": "```json\n{\n  \"subtotal_amount\": \"81.000\",\n  \"tax_amount\": \"8.100\",\n  \"service_charge\": \"null\",\n  \"total_amount\": \"89.100\",\n  \"cash_amount\": \"null\",\n  \"change_amount\": \"0\"\n}\n```",
+        "metadata": {
+          "backend": "transformers",
+          "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+          "load_in_4bit": true,
+          "compute_dtype": "bfloat16",
+          "latency_seconds": 2.779,
+          "peak_gpu_memory_gib": 2.452,
+          "model_calls": 2,
+          "recheck_policy": "invalid-amount-v1"
+        },
+        "review_flags": [],
+        "initial_prediction": {
+          "document_type": null,
+          "fields": {
+            "subtotal_amount": "81.000",
+            "tax_amount": "8.100",
+            "service_charge": "null",
+            "total_amount": "89.100",
+            "cash_amount": "null",
+            "change_amount": "0"
+          },
+          "answer": "",
+          "evidence": [],
+          "uncertainties": [],
+          "confidence": 0.0,
+          "raw_output": "```json\n{\n  \"subtotal_amount\": \"81.000\",\n  \"tax_amount\": \"8.100\",\n  \"service_charge\": \"null\",\n  \"total_amount\": \"89.100\",\n  \"cash_amount\": \"null\",\n  \"change_amount\": \"0\"\n}\n```",
+          "metadata": {
+            "backend": "transformers",
+            "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+            "load_in_4bit": true,
+            "compute_dtype": "bfloat16",
+            "latency_seconds": 1.871,
+            "peak_gpu_memory_gib": 2.452
+          }
+        },
+        "recheck_attempt": {
+          "requested_fields": [
+            "service_charge",
+            "cash_amount"
+          ],
+          "question": "Re-read only the requested monetary amounts from the receipt image. Copy each amount exactly, including currency prefixes, commas, dots and printed zeroes. Percentages are rates, not amounts. If a monetary amount is absent or unreadable, return JSON null. Do not calculate a value.\nservice_charge: The printed monetary service charge. A service percentage alone is not an amount; do not calculate it.\ncash_amount: The printed cash tendered beside Cash or Tunai. Do not copy Total into this field unless the cash line itself prints that amount.",
+          "prediction": {
+            "document_type": null,
+            "fields": {
+              "service_charge": "8.100",
+              "cash_amount": "89.100"
+            },
+            "answer": "",
+            "evidence": [],
+            "uncertainties": [],
+            "confidence": 0.0,
+            "raw_output": "```json\n{\n  \"service_charge\": \"8.100\",\n  \"cash_amount\": \"89.100\"\n}\n```",
+            "metadata": {
+              "backend": "transformers",
+              "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+              "load_in_4bit": true,
+              "compute_dtype": "bfloat16",
+              "latency_seconds": 0.908,
+              "peak_gpu_memory_gib": 2.452
+            }
+          },
+          "error": null,
+          "accepted_fields": [
+            "service_charge",
+            "cash_amount"
+          ],
+          "wall_seconds": 1.001737
+        }
+      },
+      "error": null,
+      "score": {
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1.0,
+        "field_results": {
+          "subtotal_amount": true,
+          "tax_amount": true,
+          "total_amount": true,
+          "change_amount": true
+        },
+        "details": {
+          "subtotal_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "81.000",
+            "predicted": "81.000",
+            "expected_present": true
+          },
+          "tax_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "8.100",
+            "predicted": "8.100",
+            "expected_present": true
+          },
+          "total_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "89.100",
+            "predicted": "89.100",
+            "expected_present": true
+          },
+          "change_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "0",
+            "predicted": "0",
+            "expected_present": true
+          }
+        }
+      },
+      "raw_error_output": null,
+      "wall_seconds": 2.941931
+    },
+    {
+      "id": "cord-validation-0012",
+      "image": "images/cord-validation-0012.png",
+      "prediction": {
+        "document_type": null,
+        "fields": {
+          "subtotal_amount": "72.000",
+          "tax_amount": null,
+          "service_charge": null,
+          "total_amount": "72.000",
+          "cash_amount": "72.000",
+          "change_amount": "0"
+        },
+        "answer": "",
+        "evidence": [],
+        "uncertainties": [],
+        "confidence": 0.0,
+        "raw_output": "```json\n{\n  \"subtotal_amount\": \"72.000\",\n  \"tax_amount\": \"null\",\n  \"service_charge\": \"null\",\n  \"total_amount\": \"72.000\",\n  \"cash_amount\": \"72.000\",\n  \"change_amount\": \"0\"\n}\n```",
+        "metadata": {
+          "backend": "transformers",
+          "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+          "load_in_4bit": true,
+          "compute_dtype": "bfloat16",
+          "latency_seconds": 2.438,
+          "peak_gpu_memory_gib": 2.449,
+          "model_calls": 2,
+          "recheck_policy": "invalid-amount-v1"
+        },
+        "review_flags": [],
+        "initial_prediction": {
+          "document_type": null,
+          "fields": {
+            "subtotal_amount": "72.000",
+            "tax_amount": "null",
+            "service_charge": "null",
+            "total_amount": "72.000",
+            "cash_amount": "72.000",
+            "change_amount": "0"
+          },
+          "answer": "",
+          "evidence": [],
+          "uncertainties": [],
+          "confidence": 0.0,
+          "raw_output": "```json\n{\n  \"subtotal_amount\": \"72.000\",\n  \"tax_amount\": \"null\",\n  \"service_charge\": \"null\",\n  \"total_amount\": \"72.000\",\n  \"cash_amount\": \"72.000\",\n  \"change_amount\": \"0\"\n}\n```",
+          "metadata": {
+            "backend": "transformers",
+            "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+            "load_in_4bit": true,
+            "compute_dtype": "bfloat16",
+            "latency_seconds": 1.814,
+            "peak_gpu_memory_gib": 2.449
+          }
+        },
+        "recheck_attempt": {
+          "requested_fields": [
+            "tax_amount",
+            "service_charge"
+          ],
+          "question": "Re-read only the requested monetary amounts from the receipt image. Copy each amount exactly, including currency prefixes, commas, dots and printed zeroes. Percentages are rates, not amounts. If a monetary amount is absent or unreadable, return JSON null. Do not calculate a value.\ntax_amount: The printed monetary tax amount beside Tax, PPN or PB1. A percentage such as a tax-included notice is a rate, never a tax amount. If only a rate is printed, return null; do not calculate tax.\nservice_charge: The printed monetary service charge. A service percentage alone is not an amount; do not calculate it.",
+          "prediction": {
+            "document_type": null,
+            "fields": {
+              "tax_amount": null,
+              "service_charge": null
+            },
+            "answer": "",
+            "evidence": [],
+            "uncertainties": [],
+            "confidence": 0.0,
+            "raw_output": "```json\n{\n  \"tax_amount\": null,\n  \"service_charge\": null\n}\n```",
+            "metadata": {
+              "backend": "transformers",
+              "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+              "load_in_4bit": true,
+              "compute_dtype": "bfloat16",
+              "latency_seconds": 0.624,
+              "peak_gpu_memory_gib": 2.449
+            }
+          },
+          "error": null,
+          "accepted_fields": [
+            "tax_amount",
+            "service_charge"
+          ],
+          "wall_seconds": 0.714731
+        }
+      },
+      "error": null,
+      "score": {
+        "correct": 2,
+        "total": 2,
+        "accuracy": 1.0,
+        "field_results": {
+          "total_amount": true,
+          "change_amount": true
+        },
+        "details": {
+          "total_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "72.000",
+            "predicted": "72.000",
+            "expected_present": true
+          },
+          "change_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "0",
+            "predicted": "0",
+            "expected_present": true
+          }
+        }
+      },
+      "raw_error_output": null,
+      "wall_seconds": 2.619854
+    },
+    {
+      "id": "cord-validation-0013",
+      "image": "images/cord-validation-0013.png",
+      "prediction": {
+        "document_type": null,
+        "fields": {
+          "subtotal_amount": "7,727",
+          "tax_amount": "4,136",
+          "service_charge": null,
+          "total_amount": "45,500",
+          "cash_amount": "50,000",
+          "change_amount": "-4,500"
+        },
+        "answer": "",
+        "evidence": [],
+        "uncertainties": [],
+        "confidence": 0.0,
+        "raw_output": "```json\n{\n  \"subtotal_amount\": \"7,727\",\n  \"tax_amount\": \"4,136\",\n  \"service_charge\": \"null\",\n  \"total_amount\": \"45,500\",\n  \"cash_amount\": \"50,000\",\n  \"change_amount\": \"-4,500\"\n}\n```",
+        "metadata": {
+          "backend": "transformers",
+          "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+          "load_in_4bit": true,
+          "compute_dtype": "bfloat16",
+          "latency_seconds": 2.531,
+          "peak_gpu_memory_gib": 2.449,
+          "model_calls": 2,
+          "recheck_policy": "invalid-amount-v1"
+        },
+        "review_flags": [],
+        "initial_prediction": {
+          "document_type": null,
+          "fields": {
+            "subtotal_amount": "7,727",
+            "tax_amount": "4,136",
+            "service_charge": "null",
+            "total_amount": "45,500",
+            "cash_amount": "50,000",
+            "change_amount": "-4,500"
+          },
+          "answer": "",
+          "evidence": [],
+          "uncertainties": [],
+          "confidence": 0.0,
+          "raw_output": "```json\n{\n  \"subtotal_amount\": \"7,727\",\n  \"tax_amount\": \"4,136\",\n  \"service_charge\": \"null\",\n  \"total_amount\": \"45,500\",\n  \"cash_amount\": \"50,000\",\n  \"change_amount\": \"-4,500\"\n}\n```",
+          "metadata": {
+            "backend": "transformers",
+            "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+            "load_in_4bit": true,
+            "compute_dtype": "bfloat16",
+            "latency_seconds": 2.068,
+            "peak_gpu_memory_gib": 2.449
+          }
+        },
+        "recheck_attempt": {
+          "requested_fields": [
+            "service_charge"
+          ],
+          "question": "Re-read only the requested monetary amounts from the receipt image. Copy each amount exactly, including currency prefixes, commas, dots and printed zeroes. Percentages are rates, not amounts. If a monetary amount is absent or unreadable, return JSON null. Do not calculate a value.\nservice_charge: The printed monetary service charge. A service percentage alone is not an amount; do not calculate it.",
+          "prediction": {
+            "document_type": null,
+            "fields": {
+              "service_charge": null
+            },
+            "answer": "",
+            "evidence": [],
+            "uncertainties": [],
+            "confidence": 0.0,
+            "raw_output": "```json\n{\n  \"service_charge\": null\n}\n```",
+            "metadata": {
+              "backend": "transformers",
+              "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+              "load_in_4bit": true,
+              "compute_dtype": "bfloat16",
+              "latency_seconds": 0.463,
+              "peak_gpu_memory_gib": 2.448
+            }
+          },
+          "error": null,
+          "accepted_fields": [
+            "service_charge"
+          ],
+          "wall_seconds": 0.553042
+        }
+      },
+      "error": null,
+      "score": {
+        "correct": 4,
+        "total": 5,
+        "accuracy": 0.8,
+        "field_results": {
+          "subtotal_amount": false,
+          "tax_amount": true,
+          "total_amount": true,
+          "cash_amount": true,
+          "change_amount": true
+        },
+        "details": {
+          "subtotal_amount": {
+            "correct": false,
+            "category": "value_mismatch",
+            "expected": "41,364",
+            "predicted": "7,727",
+            "expected_present": true
+          },
+          "tax_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "4,136",
+            "predicted": "4,136",
+            "expected_present": true
+          },
+          "total_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "45,500",
+            "predicted": "45,500",
+            "expected_present": true
+          },
+          "cash_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "50,000",
+            "predicted": "50,000",
+            "expected_present": true
+          },
+          "change_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "-4,500",
+            "predicted": "-4,500",
+            "expected_present": true
+          }
+        }
+      },
+      "raw_error_output": null,
+      "wall_seconds": 2.709095
+    },
+    {
+      "id": "cord-validation-0014",
+      "image": "images/cord-validation-0014.png",
+      "prediction": {
+        "document_type": null,
+        "fields": {
+          "subtotal_amount": "Rp 36.000",
+          "tax_amount": "Rp 3.600",
+          "service_charge": "Rp 39.600",
+          "total_amount": "Rp 39.600",
+          "cash_amount": "Rp 39.600",
+          "change_amount": "Rp 0.00"
+        },
+        "answer": "",
+        "evidence": [],
+        "uncertainties": [],
+        "confidence": 0.0,
+        "raw_output": "```json\n{\n  \"subtotal_amount\": \"Rp 36.000\",\n  \"tax_amount\": \"Rp 3.600\",\n  \"service_charge\": \"Rp 39.600\",\n  \"total_amount\": \"Rp 39.600\",\n  \"cash_amount\": \"Rp 39.600\",\n  \"change_amount\": \"Rp 0.00\"\n}\n```",
+        "metadata": {
+          "backend": "transformers",
+          "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+          "load_in_4bit": true,
+          "compute_dtype": "bfloat16",
+          "latency_seconds": 2.549,
+          "peak_gpu_memory_gib": 2.456
+        },
+        "review_flags": []
+      },
+      "error": null,
+      "score": {
+        "correct": 3,
+        "total": 3,
+        "accuracy": 1.0,
+        "field_results": {
+          "subtotal_amount": true,
+          "tax_amount": true,
+          "total_amount": true
+        },
+        "details": {
+          "subtotal_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "Rp 36.000",
+            "predicted": "Rp 36.000",
+            "expected_present": true
+          },
+          "tax_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "Rp 3.600",
+            "predicted": "Rp 3.600",
+            "expected_present": true
+          },
+          "total_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "Rp 39.600",
+            "predicted": "Rp 39.600",
+            "expected_present": true
+          }
+        }
+      },
+      "raw_error_output": null,
+      "wall_seconds": 2.607459
+    },
+    {
+      "id": "cord-validation-0015",
+      "image": "images/cord-validation-0015.png",
+      "prediction": {
+        "document_type": null,
+        "fields": {
+          "subtotal_amount": "Rp 54.000",
+          "tax_amount": "Rp 5.400",
+          "service_charge": null,
+          "total_amount": "Rp 59.400",
+          "cash_amount": "Rp 100.000",
+          "change_amount": "Rp 40.600"
+        },
+        "answer": "",
+        "evidence": [],
+        "uncertainties": [],
+        "confidence": 0.0,
+        "raw_output": "```json\n{\n  \"subtotal_amount\": \"Rp 54.000\",\n  \"tax_amount\": \"Rp 5.400\",\n  \"service_charge\": \"null\",\n  \"total_amount\": \"Rp 59.400\",\n  \"cash_amount\": \"Rp 100.000\",\n  \"change_amount\": \"Rp 40.600\"\n}\n```",
+        "metadata": {
+          "backend": "transformers",
+          "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+          "load_in_4bit": true,
+          "compute_dtype": "bfloat16",
+          "latency_seconds": 2.826,
+          "peak_gpu_memory_gib": 2.449,
+          "model_calls": 2,
+          "recheck_policy": "invalid-amount-v1"
+        },
+        "review_flags": [],
+        "initial_prediction": {
+          "document_type": null,
+          "fields": {
+            "subtotal_amount": "Rp 54.000",
+            "tax_amount": "Rp 5.400",
+            "service_charge": "null",
+            "total_amount": "Rp 59.400",
+            "cash_amount": "Rp 100.000",
+            "change_amount": "Rp 40.600"
+          },
+          "answer": "",
+          "evidence": [],
+          "uncertainties": [],
+          "confidence": 0.0,
+          "raw_output": "```json\n{\n  \"subtotal_amount\": \"Rp 54.000\",\n  \"tax_amount\": \"Rp 5.400\",\n  \"service_charge\": \"null\",\n  \"total_amount\": \"Rp 59.400\",\n  \"cash_amount\": \"Rp 100.000\",\n  \"change_amount\": \"Rp 40.600\"\n}\n```",
+          "metadata": {
+            "backend": "transformers",
+            "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+            "load_in_4bit": true,
+            "compute_dtype": "bfloat16",
+            "latency_seconds": 2.372,
+            "peak_gpu_memory_gib": 2.449
+          }
+        },
+        "recheck_attempt": {
+          "requested_fields": [
+            "service_charge"
+          ],
+          "question": "Re-read only the requested monetary amounts from the receipt image. Copy each amount exactly, including currency prefixes, commas, dots and printed zeroes. Percentages are rates, not amounts. If a monetary amount is absent or unreadable, return JSON null. Do not calculate a value.\nservice_charge: The printed monetary service charge. A service percentage alone is not an amount; do not calculate it.",
+          "prediction": {
+            "document_type": null,
+            "fields": {
+              "service_charge": null
+            },
+            "answer": "",
+            "evidence": [],
+            "uncertainties": [],
+            "confidence": 0.0,
+            "raw_output": "```json\n{\n  \"service_charge\": null\n}\n```",
+            "metadata": {
+              "backend": "transformers",
+              "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+              "load_in_4bit": true,
+              "compute_dtype": "bfloat16",
+              "latency_seconds": 0.454,
+              "peak_gpu_memory_gib": 2.448
+            }
+          },
+          "error": null,
+          "accepted_fields": [
+            "service_charge"
+          ],
+          "wall_seconds": 0.541585
+        }
+      },
+      "error": null,
+      "score": {
+        "correct": 5,
+        "total": 5,
+        "accuracy": 1.0,
+        "field_results": {
+          "subtotal_amount": true,
+          "tax_amount": true,
+          "total_amount": true,
+          "cash_amount": true,
+          "change_amount": true
+        },
+        "details": {
+          "subtotal_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "Rp 54.000",
+            "predicted": "Rp 54.000",
+            "expected_present": true
+          },
+          "tax_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "Rp 5.400",
+            "predicted": "Rp 5.400",
+            "expected_present": true
+          },
+          "total_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "Rp 59.400",
+            "predicted": "Rp 59.400",
+            "expected_present": true
+          },
+          "cash_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "Rp 100.000",
+            "predicted": "Rp 100.000",
+            "expected_present": true
+          },
+          "change_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "Rp 40.600",
+            "predicted": "Rp 40.600",
+            "expected_present": true
+          }
+        }
+      },
+      "raw_error_output": null,
+      "wall_seconds": 2.999247
+    },
+    {
+      "id": "cord-validation-0016",
+      "image": "images/cord-validation-0016.png",
+      "prediction": {
+        "document_type": null,
+        "fields": {
+          "subtotal_amount": "20,000",
+          "tax_amount": "20,000",
+          "service_charge": "80,000",
+          "total_amount": "20,000",
+          "cash_amount": "100,000",
+          "change_amount": "80,000"
+        },
+        "answer": "",
+        "evidence": [],
+        "uncertainties": [],
+        "confidence": 0.0,
+        "raw_output": "```json\n{\n  \"subtotal_amount\": \"20,000\",\n  \"tax_amount\": \"20,000\",\n  \"service_charge\": \"80,000\",\n  \"total_amount\": \"20,000\",\n  \"cash_amount\": \"100,000\",\n  \"change_amount\": \"80,000\"\n}\n```",
+        "metadata": {
+          "backend": "transformers",
+          "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+          "load_in_4bit": true,
+          "compute_dtype": "bfloat16",
+          "latency_seconds": 2.217,
+          "peak_gpu_memory_gib": 2.455
+        },
+        "review_flags": []
+      },
+      "error": null,
+      "score": {
+        "correct": 3,
+        "total": 3,
+        "accuracy": 1.0,
+        "field_results": {
+          "total_amount": true,
+          "cash_amount": true,
+          "change_amount": true
+        },
+        "details": {
+          "total_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "20,000",
+            "predicted": "20,000",
+            "expected_present": true
+          },
+          "cash_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "100,000",
+            "predicted": "100,000",
+            "expected_present": true
+          },
+          "change_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "80,000",
+            "predicted": "80,000",
+            "expected_present": true
+          }
+        }
+      },
+      "raw_error_output": null,
+      "wall_seconds": 2.526842
+    },
+    {
+      "id": "cord-validation-0017",
+      "image": "images/cord-validation-0017.png",
+      "prediction": {
+        "document_type": null,
+        "fields": {
+          "subtotal_amount": "20.0000",
+          "tax_amount": null,
+          "service_charge": null,
+          "total_amount": "20.0000",
+          "cash_amount": "100.0000",
+          "change_amount": "80.0000"
+        },
+        "answer": "",
+        "evidence": [],
+        "uncertainties": [],
+        "confidence": 0.0,
+        "raw_output": "```json\n{\n  \"subtotal_amount\": \"20.0000\",\n  \"tax_amount\": \"null\",\n  \"service_charge\": \"null\",\n  \"total_amount\": \"20.0000\",\n  \"cash_amount\": \"100.0000\",\n  \"change_amount\": \"80.0000\"\n}\n```",
+        "metadata": {
+          "backend": "transformers",
+          "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+          "load_in_4bit": true,
+          "compute_dtype": "bfloat16",
+          "latency_seconds": 2.614,
+          "peak_gpu_memory_gib": 2.401,
+          "model_calls": 2,
+          "recheck_policy": "invalid-amount-v1"
+        },
+        "review_flags": [],
+        "initial_prediction": {
+          "document_type": null,
+          "fields": {
+            "subtotal_amount": "20.0000",
+            "tax_amount": "null",
+            "service_charge": "null",
+            "total_amount": "20.0000",
+            "cash_amount": "100.0000",
+            "change_amount": "80.0000"
+          },
+          "answer": "",
+          "evidence": [],
+          "uncertainties": [],
+          "confidence": 0.0,
+          "raw_output": "```json\n{\n  \"subtotal_amount\": \"20.0000\",\n  \"tax_amount\": \"null\",\n  \"service_charge\": \"null\",\n  \"total_amount\": \"20.0000\",\n  \"cash_amount\": \"100.0000\",\n  \"change_amount\": \"80.0000\"\n}\n```",
+          "metadata": {
+            "backend": "transformers",
+            "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+            "load_in_4bit": true,
+            "compute_dtype": "bfloat16",
+            "latency_seconds": 2.021,
+            "peak_gpu_memory_gib": 2.401
+          }
+        },
+        "recheck_attempt": {
+          "requested_fields": [
+            "tax_amount",
+            "service_charge"
+          ],
+          "question": "Re-read only the requested monetary amounts from the receipt image. Copy each amount exactly, including currency prefixes, commas, dots and printed zeroes. Percentages are rates, not amounts. If a monetary amount is absent or unreadable, return JSON null. Do not calculate a value.\ntax_amount: The printed monetary tax amount beside Tax, PPN or PB1. A percentage such as a tax-included notice is a rate, never a tax amount. If only a rate is printed, return null; do not calculate tax.\nservice_charge: The printed monetary service charge. A service percentage alone is not an amount; do not calculate it.",
+          "prediction": {
+            "document_type": null,
+            "fields": {
+              "tax_amount": null,
+              "service_charge": null
+            },
+            "answer": "",
+            "evidence": [],
+            "uncertainties": [],
+            "confidence": 0.0,
+            "raw_output": "```json\n{\n  \"tax_amount\": null,\n  \"service_charge\": null\n}\n```",
+            "metadata": {
+              "backend": "transformers",
+              "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+              "load_in_4bit": true,
+              "compute_dtype": "bfloat16",
+              "latency_seconds": 0.593,
+              "peak_gpu_memory_gib": 2.401
+            }
+          },
+          "error": null,
+          "accepted_fields": [
+            "tax_amount",
+            "service_charge"
+          ],
+          "wall_seconds": 0.620536
+        }
+      },
+      "error": null,
+      "score": {
+        "correct": 0,
+        "total": 4,
+        "accuracy": 0.0,
+        "field_results": {
+          "subtotal_amount": false,
+          "total_amount": false,
+          "cash_amount": false,
+          "change_amount": false
+        },
+        "details": {
+          "subtotal_amount": {
+            "correct": false,
+            "category": "value_mismatch",
+            "expected": "20,000",
+            "predicted": "20.0000",
+            "expected_present": true
+          },
+          "total_amount": {
+            "correct": false,
+            "category": "value_mismatch",
+            "expected": "20,000",
+            "predicted": "20.0000",
+            "expected_present": true
+          },
+          "cash_amount": {
+            "correct": false,
+            "category": "value_mismatch",
+            "expected": "100,000",
+            "predicted": "100.0000",
+            "expected_present": true
+          },
+          "change_amount": {
+            "correct": false,
+            "category": "value_mismatch",
+            "expected": "80.000",
+            "predicted": "80.0000",
+            "expected_present": true
+          }
+        }
+      },
+      "raw_error_output": null,
+      "wall_seconds": 2.675138
+    },
+    {
+      "id": "cord-validation-0018",
+      "image": "images/cord-validation-0018.png",
+      "prediction": {
+        "document_type": null,
+        "fields": {
+          "subtotal_amount": "10,000",
+          "tax_amount": "10,000",
+          "service_charge": "25,000",
+          "total_amount": "75,000",
+          "cash_amount": "100,000",
+          "change_amount": "75,000"
+        },
+        "answer": "",
+        "evidence": [],
+        "uncertainties": [],
+        "confidence": 0.0,
+        "raw_output": "```json\n{\n  \"subtotal_amount\": \"10,000\",\n  \"tax_amount\": \"10,000\",\n  \"service_charge\": \"25,000\",\n  \"total_amount\": \"75,000\",\n  \"cash_amount\": \"100,000\",\n  \"change_amount\": \"75,000\"\n}\n```",
+        "metadata": {
+          "backend": "transformers",
+          "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+          "load_in_4bit": true,
+          "compute_dtype": "bfloat16",
+          "latency_seconds": 2.151,
+          "peak_gpu_memory_gib": 2.401
+        },
+        "review_flags": []
+      },
+      "error": null,
+      "score": {
+        "correct": 2,
+        "total": 3,
+        "accuracy": 0.6666666666666666,
+        "field_results": {
+          "total_amount": false,
+          "cash_amount": true,
+          "change_amount": true
+        },
+        "details": {
+          "total_amount": {
+            "correct": false,
+            "category": "value_mismatch",
+            "expected": "25,000",
+            "predicted": "75,000",
+            "expected_present": true
+          },
+          "cash_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "100,000",
+            "predicted": "100,000",
+            "expected_present": true
+          },
+          "change_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "75,000",
+            "predicted": "75,000",
+            "expected_present": true
+          }
+        }
+      },
+      "raw_error_output": null,
+      "wall_seconds": 2.178921
+    },
+    {
+      "id": "cord-validation-0019",
+      "image": "images/cord-validation-0019.png",
+      "prediction": {
+        "document_type": null,
+        "fields": {
+          "subtotal_amount": "12,500",
+          "tax_amount": null,
+          "service_charge": null,
+          "total_amount": "42,500",
+          "cash_amount": "50,000",
+          "change_amount": "7,500"
+        },
+        "answer": "",
+        "evidence": [],
+        "uncertainties": [],
+        "confidence": 0.0,
+        "raw_output": "```json\n{\n  \"subtotal_amount\": \"12,500\",\n  \"tax_amount\": \"null\",\n  \"service_charge\": \"null\",\n  \"total_amount\": \"42,500\",\n  \"cash_amount\": \"50,000\",\n  \"change_amount\": \"7,500\"\n}\n```",
+        "metadata": {
+          "backend": "transformers",
+          "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+          "load_in_4bit": true,
+          "compute_dtype": "bfloat16",
+          "latency_seconds": 2.57,
+          "peak_gpu_memory_gib": 2.457,
+          "model_calls": 2,
+          "recheck_policy": "invalid-amount-v1"
+        },
+        "review_flags": [],
+        "initial_prediction": {
+          "document_type": null,
+          "fields": {
+            "subtotal_amount": "12,500",
+            "tax_amount": "null",
+            "service_charge": "null",
+            "total_amount": "42,500",
+            "cash_amount": "50,000",
+            "change_amount": "7,500"
+          },
+          "answer": "",
+          "evidence": [],
+          "uncertainties": [],
+          "confidence": 0.0,
+          "raw_output": "```json\n{\n  \"subtotal_amount\": \"12,500\",\n  \"tax_amount\": \"null\",\n  \"service_charge\": \"null\",\n  \"total_amount\": \"42,500\",\n  \"cash_amount\": \"50,000\",\n  \"change_amount\": \"7,500\"\n}\n```",
+          "metadata": {
+            "backend": "transformers",
+            "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+            "load_in_4bit": true,
+            "compute_dtype": "bfloat16",
+            "latency_seconds": 1.917,
+            "peak_gpu_memory_gib": 2.457
+          }
+        },
+        "recheck_attempt": {
+          "requested_fields": [
+            "tax_amount",
+            "service_charge"
+          ],
+          "question": "Re-read only the requested monetary amounts from the receipt image. Copy each amount exactly, including currency prefixes, commas, dots and printed zeroes. Percentages are rates, not amounts. If a monetary amount is absent or unreadable, return JSON null. Do not calculate a value.\ntax_amount: The printed monetary tax amount beside Tax, PPN or PB1. A percentage such as a tax-included notice is a rate, never a tax amount. If only a rate is printed, return null; do not calculate tax.\nservice_charge: The printed monetary service charge. A service percentage alone is not an amount; do not calculate it.",
+          "prediction": {
+            "document_type": null,
+            "fields": {
+              "tax_amount": null,
+              "service_charge": null
+            },
+            "answer": "",
+            "evidence": [],
+            "uncertainties": [],
+            "confidence": 0.0,
+            "raw_output": "```json\n{\n  \"tax_amount\": null,\n  \"service_charge\": null\n}\n```",
+            "metadata": {
+              "backend": "transformers",
+              "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+              "load_in_4bit": true,
+              "compute_dtype": "bfloat16",
+              "latency_seconds": 0.653,
+              "peak_gpu_memory_gib": 2.457
+            }
+          },
+          "error": null,
+          "accepted_fields": [
+            "tax_amount",
+            "service_charge"
+          ],
+          "wall_seconds": 0.728895
+        }
+      },
+      "error": null,
+      "score": {
+        "correct": 3,
+        "total": 3,
+        "accuracy": 1.0,
+        "field_results": {
+          "total_amount": true,
+          "cash_amount": true,
+          "change_amount": true
+        },
+        "details": {
+          "total_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "42,500",
+            "predicted": "42,500",
+            "expected_present": true
+          },
+          "cash_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "50,000",
+            "predicted": "50,000",
+            "expected_present": true
+          },
+          "change_amount": {
+            "correct": true,
+            "category": "correct",
+            "expected": "7,500",
+            "predicted": "7,500",
+            "expected_present": true
+          }
+        }
+      },
+      "raw_error_output": null,
+      "wall_seconds": 2.709319
+    }
+  ],
+  "complete": true,
+  "examples": 20,
+  "failed_examples": 0,
+  "review_flagged_examples": 0,
+  "rechecked_examples": 10,
+  "failed_rechecks": 0,
+  "correct_fields": 54,
+  "total_fields": 72,
+  "field_accuracy": 0.75,
+  "present_field_accuracy": 0.75,
+  "document_accuracy": 0.5,
+  "per_field": {
+    "total_amount": {
+      "correct": 15,
+      "total": 20,
+      "accuracy": 0.75
+    },
+    "cash_amount": {
+      "correct": 12,
+      "total": 16,
+      "accuracy": 0.75
+    },
+    "change_amount": {
+      "correct": 15,
+      "total": 17,
+      "accuracy": 0.8823529411764706
+    },
+    "subtotal_amount": {
+      "correct": 8,
+      "total": 11,
+      "accuracy": 0.7272727272727273
+    },
+    "tax_amount": {
+      "correct": 4,
+      "total": 8,
+      "accuracy": 0.5
+    }
+  },
+  "error_categories": {
+    "value_mismatch": 16,
+    "missing_value": 2
+  },
+  "performance": {
+    "successful_examples_mean_wall_seconds": 2.51928725
+  }
+}

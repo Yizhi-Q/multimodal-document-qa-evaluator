@@ -1,0 +1,5 @@
+﻿id,image,field,reason,predicted
+cord-validation-0002,images/cord-validation-0002.png,service_charge,placeholder_is_not_amount,"""null"""
+cord-validation-0003,images/cord-validation-0003.png,tax_amount,percentage_is_not_amount,"""70%"""
+cord-validation-0011,images/cord-validation-0011.png,service_charge,placeholder_is_not_amount,"""null"""
+cord-validation-0011,images/cord-validation-0011.png,cash_amount,placeholder_is_not_amount,"""null"""

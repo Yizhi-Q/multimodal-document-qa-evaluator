@@ -1,0 +1,9 @@
+[
+  {
+    "id": "cord-validation-0002",
+    "field": "tax_amount",
+    "before": "10%",
+    "after": "1,818",
+    "improved": true
+  }
+]

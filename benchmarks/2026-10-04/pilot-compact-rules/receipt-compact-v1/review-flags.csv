@@ -1,0 +1,9 @@
+﻿id,image,field,reason,predicted
+cord-validation-0002,images/cord-validation-0002.png,tax_amount,percentage_is_not_amount,"""10%"""
+cord-validation-0005,images/cord-validation-0005.png,service_charge,placeholder_is_not_amount,"""null"""
+cord-validation-0011,images/cord-validation-0011.png,service_charge,placeholder_is_not_amount,"""null"""
+cord-validation-0011,images/cord-validation-0011.png,cash_amount,placeholder_is_not_amount,"""null"""
+cord-validation-0017,images/cord-validation-0017.png,tax_amount,placeholder_is_not_amount,"""null"""
+cord-validation-0017,images/cord-validation-0017.png,service_charge,placeholder_is_not_amount,"""null"""
+cord-validation-0019,images/cord-validation-0019.png,tax_amount,placeholder_is_not_amount,"""null"""
+cord-validation-0019,images/cord-validation-0019.png,service_charge,placeholder_is_not_amount,"""null"""

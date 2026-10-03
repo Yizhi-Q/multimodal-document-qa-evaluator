@@ -1,0 +1,34 @@
+[
+  {
+    "receipt_profile": "baseline",
+    "receipt_recheck": "none",
+    "source_sha256": "6e74f91cf6ec1418fb1145250aad00983f637ff8df2f2c8e53d7eb66d8f2b03e",
+    "system_prompt": "Analyse the document image using only visible evidence.\nReturn one valid JSON object with no surrounding prose. Do not guess unreadable values.\nUse null for missing scalar fields. Return this shape:\n{\n  \"document_type\": \"string or null\",\n  \"fields\": {\"requested_field\": \"value or null\"},\n  \"answer\": \"string\",\n  \"evidence\": [{\"field\": \"field name\", \"text\": \"visible snippet\"}],\n  \"uncertainties\": [\"description\"],\n  \"confidence\": 0.0\n}\n",
+    "question": "Extract the printed receipt amounts: subtotal before charges, tax, service charge, final total, cash tendered, and change. Copy each amount exactly as printed, preserving decimal and thousands separators and any currency prefix printed with the amount. Use strings, not JSON numbers. Use JSON null (not the string \"null\") when not shown. Tax may be labelled Tax, PPN, or PB1. Keep an explicitly printed zero. Do not calculate missing amounts.",
+    "field_schema": {
+      "subtotal_amount": "string or null",
+      "tax_amount": "string or null",
+      "service_charge": "string or null",
+      "total_amount": "string or null",
+      "cash_amount": "string or null",
+      "change_amount": "string or null"
+    },
+    "user_prompt": "Requested field schema:\n{\n  \"subtotal_amount\": \"string or null\",\n  \"tax_amount\": \"string or null\",\n  \"service_charge\": \"string or null\",\n  \"total_amount\": \"string or null\",\n  \"cash_amount\": \"string or null\",\n  \"change_amount\": \"string or null\"\n}\n\nQuestion: Extract the printed receipt amounts: subtotal before charges, tax, service charge, final total, cash tendered, and change. Copy each amount exactly as printed, preserving decimal and thousands separators and any currency prefix printed with the amount. Use strings, not JSON numbers. Use JSON null (not the string \"null\") when not shown. Tax may be labelled Tax, PPN, or PB1. Keep an explicitly printed zero. Do not calculate missing amounts.\nKeep field names exactly as provided."
+  },
+  {
+    "receipt_profile": "baseline",
+    "receipt_recheck": "percent-crop-v1",
+    "source_sha256": "6e74f91cf6ec1418fb1145250aad00983f637ff8df2f2c8e53d7eb66d8f2b03e",
+    "system_prompt": "Analyse the document image using only visible evidence.\nReturn one valid JSON object with no surrounding prose. Do not guess unreadable values.\nUse null for missing scalar fields. Return this shape:\n{\n  \"document_type\": \"string or null\",\n  \"fields\": {\"requested_field\": \"value or null\"},\n  \"answer\": \"string\",\n  \"evidence\": [{\"field\": \"field name\", \"text\": \"visible snippet\"}],\n  \"uncertainties\": [\"description\"],\n  \"confidence\": 0.0\n}\n",
+    "question": "Extract the printed receipt amounts: subtotal before charges, tax, service charge, final total, cash tendered, and change. Copy each amount exactly as printed, preserving decimal and thousands separators and any currency prefix printed with the amount. Use strings, not JSON numbers. Use JSON null (not the string \"null\") when not shown. Tax may be labelled Tax, PPN, or PB1. Keep an explicitly printed zero. Do not calculate missing amounts.",
+    "field_schema": {
+      "subtotal_amount": "string or null",
+      "tax_amount": "string or null",
+      "service_charge": "string or null",
+      "total_amount": "string or null",
+      "cash_amount": "string or null",
+      "change_amount": "string or null"
+    },
+    "user_prompt": "Requested field schema:\n{\n  \"subtotal_amount\": \"string or null\",\n  \"tax_amount\": \"string or null\",\n  \"service_charge\": \"string or null\",\n  \"total_amount\": \"string or null\",\n  \"cash_amount\": \"string or null\",\n  \"change_amount\": \"string or null\"\n}\n\nQuestion: Extract the printed receipt amounts: subtotal before charges, tax, service charge, final total, cash tendered, and change. Copy each amount exactly as printed, preserving decimal and thousands separators and any currency prefix printed with the amount. Use strings, not JSON numbers. Use JSON null (not the string \"null\") when not shown. Tax may be labelled Tax, PPN, or PB1. Keep an explicitly printed zero. Do not calculate missing amounts.\nKeep field names exactly as provided."
+  }
+]
