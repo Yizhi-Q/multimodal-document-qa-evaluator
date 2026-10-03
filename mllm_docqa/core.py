@@ -5,6 +5,7 @@ from __future__ import annotations
 import base64
 import json
 import mimetypes
+import math
 import os
 import re
 import time
@@ -30,6 +31,14 @@ class OutputParseError(ValueError):
     pass
 
 
+def parse_with_raw(raw_text, expected_fields):
+    try:
+        return parse_model_output(raw_text, expected_fields)
+    except OutputParseError as exc:
+        exc.raw_output = raw_text
+        raise
+
+
 def parse_model_output(raw_text: str, expected_fields: list[str] | None = None) -> dict[str, Any]:
     if not raw_text or not raw_text.strip():
         raise OutputParseError("The model returned an empty response.")
@@ -50,16 +59,21 @@ def parse_model_output(raw_text: str, expected_fields: list[str] | None = None) 
     if parsed is None:
         raise OutputParseError("The response did not contain a valid JSON object.")
 
-    fields = parsed.get("fields") if isinstance(parsed.get("fields"), dict) else {}
+    if "fields" in parsed and not isinstance(parsed["fields"], dict):
+        raise OutputParseError("The fields property must be an object.")
+    fields = parsed.get("fields", {})
     # Some vision-language models follow the requested field schema directly
     # and return the extracted fields at the top level. Accept that useful
     # output instead of incorrectly scoring every requested field as missing.
-    if not fields and expected_fields:
+    if "fields" not in parsed and expected_fields and any(k in parsed for k in expected_fields):
         fields = {name: parsed.get(name) for name in expected_fields}
+    elif "fields" not in parsed:
+        raise OutputParseError("No requested field object was found.")
     if expected_fields:
         fields = {name: fields.get(name) for name in expected_fields}
     try:
-        confidence = max(0.0, min(1.0, float(parsed.get("confidence"))))
+        confidence = float(parsed.get("confidence"))
+        confidence = max(0.0, min(1.0, confidence)) if math.isfinite(confidence) else 0.0
     except (TypeError, ValueError):
         confidence = 0.0
     return {
@@ -100,7 +114,13 @@ class _OpenAIAnalyzer:
         self.client = OpenAI(
             api_key=api_key,
             base_url=os.getenv("MLLM_BASE_URL", "https://api.openai.com/v1"),
+            timeout=120.0,
+            max_retries=2,
         )
+
+    def describe(self):
+        return {"backend": "openai", "model": self.model, "api_mode": self.api_mode,
+                "system_prompt": SYSTEM_PROMPT}
 
     def analyze(self, image_path: str | Path, question: str, field_schema: dict[str, Any]):
         prompt = _build_prompt(question, field_schema)
@@ -128,7 +148,8 @@ class _OpenAIAnalyzer:
                 ],
             )
             raw = response.choices[0].message.content or ""
-        result = parse_model_output(raw, list(field_schema))
+        result = parse_with_raw(raw, list(field_schema))
+        result["raw_output"] = raw
         result["metadata"] = {
             "backend": "openai",
             "model": self.model,
@@ -150,23 +171,50 @@ class _TransformersAnalyzer:
 
         self.torch = torch
         self.model_name = os.getenv("MLLM_LOCAL_MODEL", "Qwen/Qwen2.5-VL-3B-Instruct")
+        self.compute_dtype_name = os.getenv("MLLM_COMPUTE_DTYPE", "bfloat16").strip().lower()
+        dtype_options = {"bfloat16": torch.bfloat16, "float16": torch.float16}
+        if self.compute_dtype_name not in dtype_options:
+            raise ValueError("MLLM_COMPUTE_DTYPE must be 'bfloat16' or 'float16'.")
+        if self.compute_dtype_name == "bfloat16" and not torch.cuda.is_bf16_supported():
+            raise RuntimeError("This GPU does not support BF16. Set MLLM_COMPUTE_DTYPE=float16 and validate outputs.")
+        compute_dtype = dtype_options[self.compute_dtype_name]
         load_in_4bit = os.getenv("MLLM_LOAD_IN_4BIT", "true").strip().lower() in {
             "1", "true", "yes", "on",
         }
-        model_kwargs: dict[str, Any] = {"torch_dtype": "auto", "device_map": "auto"}
+        self.min_pixels = int(os.getenv("MLLM_MIN_PIXELS", str(256 * 28 * 28)))
+        self.max_pixels = int(os.getenv("MLLM_MAX_PIXELS", str(1024 * 28 * 28)))
+        self.max_new_tokens = int(os.getenv("MLLM_MAX_NEW_TOKENS", "512"))
+        if not 0 < self.min_pixels <= self.max_pixels or self.max_new_tokens < 1:
+            raise ValueError("Invalid pixel or token limits")
+        model_kwargs: dict[str, Any] = {
+            "torch_dtype": compute_dtype, "device_map": {"": 0}, "attn_implementation": "sdpa",
+            "revision": os.getenv("MLLM_MODEL_REVISION", "main"),
+        }
         if load_in_4bit:
             model_kwargs["quantization_config"] = BitsAndBytesConfig(
                 load_in_4bit=True,
                 bnb_4bit_quant_type="nf4",
-                bnb_4bit_compute_dtype=torch.float16,
+                bnb_4bit_compute_dtype=compute_dtype,
                 bnb_4bit_use_double_quant=True,
             )
         self.model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
             self.model_name,
             **model_kwargs,
         )
-        self.processor = AutoProcessor.from_pretrained(self.model_name)
+        self.revision = getattr(self.model.config, "_commit_hash", None)
+        self.processor = AutoProcessor.from_pretrained(
+            self.model_name, revision=self.revision or model_kwargs["revision"],
+            min_pixels=self.min_pixels, max_pixels=self.max_pixels, use_fast=True)
         self.load_in_4bit = load_in_4bit
+
+    def describe(self):
+        return {"backend": "transformers", "model": self.model_name,
+                "model_revision": self.revision, "load_in_4bit": self.load_in_4bit,
+                "compute_dtype": self.compute_dtype_name, "processor_use_fast": True,
+                "attention_implementation": "sdpa", "batch_size": 1,
+                "min_pixels": self.min_pixels, "max_pixels": self.max_pixels,
+                "max_new_tokens": self.max_new_tokens, "do_sample": False,
+                "gpu": self.torch.cuda.get_device_name(0), "system_prompt": SYSTEM_PROMPT}
 
     def analyze(self, image_path: str | Path, question: str, field_schema: dict[str, Any]):
         from qwen_vl_utils import process_vision_info
@@ -175,7 +223,8 @@ class _TransformersAnalyzer:
         messages = [
             {"role": "system", "content": [{"type": "text", "text": SYSTEM_PROMPT}]},
             {"role": "user", "content": [
-                {"type": "image", "image": Path(image_path).resolve().as_uri()},
+                {"type": "image", "image": Path(image_path).resolve().as_uri(),
+                 "min_pixels": self.min_pixels, "max_pixels": self.max_pixels},
                 {"type": "text", "text": prompt},
             ]},
         ]
@@ -191,14 +240,16 @@ class _TransformersAnalyzer:
             return_tensors="pt",
         ).to(self.model.device)
 
-        self.torch.cuda.reset_peak_memory_stats()
+        self.torch.cuda.synchronize(0)
+        self.torch.cuda.reset_peak_memory_stats(0)
         started = time.perf_counter()
         with self.torch.inference_mode():
             generated_ids = self.model.generate(
                 **inputs,
-                max_new_tokens=int(os.getenv("MLLM_MAX_NEW_TOKENS", "512")),
+                max_new_tokens=self.max_new_tokens,
                 do_sample=False,
             )
+        self.torch.cuda.synchronize(0)
         latency = time.perf_counter() - started
         generated_ids = [
             output_ids[len(input_ids):]
@@ -209,14 +260,16 @@ class _TransformersAnalyzer:
             skip_special_tokens=True,
             clean_up_tokenization_spaces=False,
         )[0]
-        result = parse_model_output(raw, list(field_schema))
+        result = parse_with_raw(raw, list(field_schema))
+        result["raw_output"] = raw
         result["metadata"] = {
             "backend": "transformers",
             "model": self.model_name,
             "load_in_4bit": self.load_in_4bit,
+            "compute_dtype": self.compute_dtype_name,
             "latency_seconds": round(latency, 3),
             "peak_gpu_memory_gib": round(
-                self.torch.cuda.max_memory_allocated() / (1024 ** 3), 3
+                self.torch.cuda.max_memory_allocated(0) / (1024 ** 3), 3
             ),
         }
         return result
@@ -239,3 +292,6 @@ class DocumentAnalyzer:
 
     def analyze(self, image_path: str | Path, question: str, field_schema: dict[str, Any]):
         return self._backend.analyze(image_path, question, field_schema)
+
+    def describe(self):
+        return self._backend.describe()
