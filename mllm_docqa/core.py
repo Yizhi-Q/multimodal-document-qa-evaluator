@@ -12,6 +12,8 @@ import time
 from pathlib import Path
 from typing import Any
 
+from .receipt import COMPACT_SYSTEM_PROMPT, amount_review_flags, receipt_instructions, recheck_invalid_amounts, validate_profile
+
 
 SYSTEM_PROMPT = """Analyse the document image using only visible evidence.
 Return one valid JSON object with no surrounding prose. Do not guess unreadable values.
@@ -70,6 +72,8 @@ def parse_model_output(raw_text: str, expected_fields: list[str] | None = None) 
     elif "fields" not in parsed:
         raise OutputParseError("No requested field object was found.")
     if expected_fields:
+        if fields and not set(fields).intersection(expected_fields):
+            raise OutputParseError("The fields object contains no requested field names.")
         fields = {name: fields.get(name) for name in expected_fields}
     try:
         confidence = float(parsed.get("confidence"))
@@ -92,16 +96,20 @@ def image_data_url(image_path: str | Path) -> str:
     return f"data:{mime};base64,{base64.b64encode(path.read_bytes()).decode('ascii')}"
 
 
-def _build_prompt(question: str, field_schema: dict[str, Any]) -> str:
+def _build_prompt(question: str, field_schema: dict[str, Any], receipt_profile: str = "baseline") -> str:
     schema_text = json.dumps(field_schema, ensure_ascii=False, indent=2)
-    return (
+    prompt = (
         f"Requested field schema:\n{schema_text}\n\n"
         f"Question: {question}\nKeep field names exactly as provided."
     )
+    extra = receipt_instructions(field_schema, receipt_profile)
+    return prompt + ("\n\n" + extra if extra else "")
 
 
 class _OpenAIAnalyzer:
     def __init__(self):
+        self.receipt_profile = validate_profile(os.getenv("MLLM_RECEIPT_PROFILE", "baseline").strip().lower())
+        self.system_prompt = COMPACT_SYSTEM_PROMPT if self.receipt_profile == "receipt-compact-v1" else SYSTEM_PROMPT
         from openai import OpenAI
 
         api_key = os.getenv("MLLM_API_KEY", "").strip()
@@ -120,16 +128,18 @@ class _OpenAIAnalyzer:
 
     def describe(self):
         return {"backend": "openai", "model": self.model, "api_mode": self.api_mode,
-                "system_prompt": SYSTEM_PROMPT}
+                "system_prompt": self.system_prompt, "receipt_profile": self.receipt_profile}
 
-    def analyze(self, image_path: str | Path, question: str, field_schema: dict[str, Any]):
-        prompt = _build_prompt(question, field_schema)
+    def analyze(self, image_path: str | Path, question: str, field_schema: dict[str, Any], *, receipt_profile=None):
+        profile = self.receipt_profile if receipt_profile is None else receipt_profile
+        prompt = _build_prompt(question, field_schema, profile)
+        system_prompt = COMPACT_SYSTEM_PROMPT if profile == "receipt-compact-v1" else SYSTEM_PROMPT
         url = image_data_url(image_path)
         started = time.perf_counter()
         if self.api_mode == "responses":
             response = self.client.responses.create(
                 model=self.model,
-                instructions=SYSTEM_PROMPT,
+                instructions=system_prompt,
                 input=[{"role": "user", "content": [
                     {"type": "input_text", "text": prompt},
                     {"type": "input_image", "image_url": url},
@@ -140,7 +150,7 @@ class _OpenAIAnalyzer:
             response = self.client.chat.completions.create(
                 model=self.model,
                 messages=[
-                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "system", "content": system_prompt},
                     {"role": "user", "content": [
                         {"type": "text", "text": prompt},
                         {"type": "image_url", "image_url": {"url": url}},
@@ -154,6 +164,7 @@ class _OpenAIAnalyzer:
             "backend": "openai",
             "model": self.model,
             "api_mode": self.api_mode,
+            "receipt_profile": profile,
             "latency_seconds": round(time.perf_counter() - started, 3),
         }
         return result
@@ -163,6 +174,8 @@ class _TransformersAnalyzer:
     """Local Qwen2.5-VL inference backend for an NVIDIA GPU."""
 
     def __init__(self):
+        self.receipt_profile = validate_profile(os.getenv("MLLM_RECEIPT_PROFILE", "baseline").strip().lower())
+        self.system_prompt = COMPACT_SYSTEM_PROMPT if self.receipt_profile == "receipt-compact-v1" else SYSTEM_PROMPT
         import torch
         from transformers import AutoProcessor, BitsAndBytesConfig, Qwen2_5_VLForConditionalGeneration
 
@@ -214,14 +227,17 @@ class _TransformersAnalyzer:
                 "attention_implementation": "sdpa", "batch_size": 1,
                 "min_pixels": self.min_pixels, "max_pixels": self.max_pixels,
                 "max_new_tokens": self.max_new_tokens, "do_sample": False,
-                "gpu": self.torch.cuda.get_device_name(0), "system_prompt": SYSTEM_PROMPT}
+                "gpu": self.torch.cuda.get_device_name(0), "system_prompt": self.system_prompt,
+                "receipt_profile": self.receipt_profile}
 
-    def analyze(self, image_path: str | Path, question: str, field_schema: dict[str, Any]):
+    def analyze(self, image_path: str | Path, question: str, field_schema: dict[str, Any], *, receipt_profile=None):
         from qwen_vl_utils import process_vision_info
 
-        prompt = _build_prompt(question, field_schema)
+        profile = self.receipt_profile if receipt_profile is None else receipt_profile
+        prompt = _build_prompt(question, field_schema, profile)
+        system_prompt = COMPACT_SYSTEM_PROMPT if profile == "receipt-compact-v1" else SYSTEM_PROMPT
         messages = [
-            {"role": "system", "content": [{"type": "text", "text": SYSTEM_PROMPT}]},
+            {"role": "system", "content": [{"type": "text", "text": system_prompt}]},
             {"role": "user", "content": [
                 {"type": "image", "image": Path(image_path).resolve().as_uri(),
                  "min_pixels": self.min_pixels, "max_pixels": self.max_pixels},
@@ -267,6 +283,7 @@ class _TransformersAnalyzer:
             "model": self.model_name,
             "load_in_4bit": self.load_in_4bit,
             "compute_dtype": self.compute_dtype_name,
+            "receipt_profile": profile,
             "latency_seconds": round(latency, 3),
             "peak_gpu_memory_gib": round(
                 self.torch.cuda.max_memory_allocated(0) / (1024 ** 3), 3
@@ -282,6 +299,9 @@ class DocumentAnalyzer:
         from dotenv import load_dotenv
 
         load_dotenv()
+        self.receipt_recheck = os.getenv("MLLM_RECEIPT_RECHECK", "none").strip().lower()
+        if self.receipt_recheck not in {"none", "invalid-amount-v1", "percent-crop-v1", "label-context-v1"}:
+            raise ValueError("Unknown MLLM_RECEIPT_RECHECK policy")
         backend = os.getenv("MLLM_BACKEND", "openai").strip().lower()
         if backend == "openai":
             self._backend = _OpenAIAnalyzer()
@@ -291,7 +311,11 @@ class DocumentAnalyzer:
             raise RuntimeError("MLLM_BACKEND must be 'openai' or 'transformers'.")
 
     def analyze(self, image_path: str | Path, question: str, field_schema: dict[str, Any]):
-        return self._backend.analyze(image_path, question, field_schema)
+        result = self._backend.analyze(image_path, question, field_schema)
+        if self.receipt_recheck != "none":
+            return recheck_invalid_amounts(self._backend, image_path, field_schema, result, self.receipt_recheck, question)
+        result["review_flags"] = amount_review_flags(result["fields"], field_schema)
+        return result
 
     def describe(self):
-        return self._backend.describe()
+        return {**self._backend.describe(), "receipt_recheck": self.receipt_recheck}

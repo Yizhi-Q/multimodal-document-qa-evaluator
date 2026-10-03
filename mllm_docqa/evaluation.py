@@ -121,6 +121,9 @@ def summarise(results):
     elapsed = [r["wall_seconds"] for r in results if not r["error"]]
     return {
         "examples": len(results), "failed_examples": sum(bool(r["error"]) for r in results),
+        "review_flagged_examples": sum(bool((r.get("prediction") or {}).get("review_flags")) for r in results),
+        "rechecked_examples": sum(bool((r.get("prediction") or {}).get("recheck_attempt")) for r in results),
+        "failed_rechecks": sum(bool((r.get("prediction") or {}).get("recheck_attempt", {}).get("error")) for r in results),
         "correct_fields": correct, "total_fields": total,
         "field_accuracy": correct / total if total else None,
         "present_field_accuracy": present_correct / present_total if present_total else None,
@@ -146,6 +149,13 @@ def write_review_files(output, run):
                               "predicted": json.dumps(detail["predicted"], ensure_ascii=False)}
                     writer.writerow({k: "'" + str(v) if str(v).startswith(("=", "+", "-", "@")) else v
                                      for k, v in record.items()})
+    with (output / "review-flags.csv").open("w", newline="", encoding="utf-8-sig") as stream:
+        writer = csv.DictWriter(stream, fieldnames=["id", "image", "field", "reason", "predicted"])
+        writer.writeheader()
+        for row in run["results"]:
+            for flag in (row.get("prediction") or {}).get("review_flags", []):
+                writer.writerow({"id": row["id"], "image": row["image"], "field": flag["field"],
+                                 "reason": flag["reason"], "predicted": json.dumps(flag["value"], ensure_ascii=False)})
     percent = lambda value: "n/a" if value is None else f"{value:.2%}"
     lines = ["# Evaluation result", "", run["claim"], "",
              f"Mode: {run['mode']}. Examples: {run['examples']}. Failed: {run['failed_examples']}.",
@@ -159,4 +169,7 @@ def write_review_files(output, run):
     lines += ["", "Unlabelled fields are not scored. Failed requests count as incorrect fields.",
               "Error categories describe output differences, not proven OCR or reasoning causes.",
               "Inspect images and fill review_category/review_notes in errors.csv to establish causes.", ""]
+    lines += [f"Receipts with output review flags: {run['review_flagged_examples']}.",
+              f"Additional rechecks: {run['rechecked_examples']}; failed rechecks: {run['failed_rechecks']}.",
+              "review-flags.csv uses predictions only. Flags do not alter values or scores, and an unflagged value is not verified correct.", ""]
     (output / "summary.md").write_text("\n".join(lines), encoding="utf-8")
